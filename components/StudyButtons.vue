@@ -27,22 +27,24 @@
           <v-list class="transparent no-outline">
             <v-list-item
                 v-for="(item, index) in items"
-                :key="item.title"
+                :key="index"
             >
                 <v-col>
-                    <v-row>
+                    <v-row @click="emitClick(item)">
                         <v-list-item-content>
                             <v-list-item-title>{{ item.title }}</v-list-item-title>
-                            <v-list-item-subtitle>{{ item.subtitle }}</v-list-item-subtitle>
+                            <v-list-item-subtitle style="white-space: break-spaces">{{ item.subtitle }}</v-list-item-subtitle>
                         </v-list-item-content>
                         <v-list-item-action>
                             <v-btn
+                                
                                 fab
                                 elevation="2"
                                 large
-                                color="#f06868" 
+                                :color="item.locked?'#8C8C8C':'#f06868'" 
                                 dark      
-                                style="border: 7px solid #ec5757"
+                                :readonly="item.locked"
+                                :style="`border: 7px solid ${!item.locked?'#ec5757':'#646464; pointer-events: none;'}`"
                                 >
                                 <h1 style="color: white">{{ index+1 }}</h1>
                             </v-btn>
@@ -66,6 +68,12 @@ export default {
       description: "among us"
     }
   },
+  methods: {
+    emitClick(e){
+      if(!e.locked)
+        this.$router.push({ name: e.target})
+    }
+  }
 }
 </script>
 

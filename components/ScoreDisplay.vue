@@ -15,11 +15,11 @@ export default {
   }
 }
 </script>
+
 <style scoped lang="scss">
 .green-border {
   background-color: $color-bg-green;
   border-color: $color-primary;
   border-width: 3px;
 }
-
 </style>

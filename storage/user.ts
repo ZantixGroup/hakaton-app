@@ -33,9 +33,9 @@ export class UserData {
         avatar: number | undefined
       } = JSON.parse(storage)
       const token = this._context.$auth.strategy.token.get()
-      if (token !== undefined && token && a.username && a.surname && a.score !== undefined && a.s_level !== undefined && a.t_level !== undefined && a.e_level !== undefined && a.m_level !== undefined && a.avatar !== undefined) {
+      if (token !== undefined && token && a.username && a.id && a.surname && a.score !== undefined && a.s_level !== undefined && a.t_level !== undefined && a.e_level !== undefined && a.m_level !== undefined && a.avatar !== undefined) {
         // this._context.$auth.loginWith("local", {})
-        this.setUser(a.username, a.surname, 0, a.score, a.s_level, a.t_level, a.e_level, a.m_level, a.avatar)
+        this.setUser(a.username, a.surname, a.id, a.score, a.s_level, a.t_level, a.e_level, a.m_level, a.avatar)
         // this.refetchUserData()
       } else {
         this.wipeData()

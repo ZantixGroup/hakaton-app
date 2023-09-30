@@ -59,9 +59,13 @@
 </template>
 
 <script>
-import ScoreDisplay from '~/components/ScoreDisplay.vue';
-import { DataStorage } from '~/storage/init';
-import { UserData } from "~/storage/user";
+import ScoreDisplay from '~/components/ScoreDisplay.vue'
+import { DataStorage } from '~/storage/init'
+import {UserData} from "~/storage/user";
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import html from 'highlight.js/lib/languages/vbscript-html';
+
 export default {
   name: 'DefaultLayout',
   transition: {
@@ -75,18 +79,18 @@ export default {
       fixed: false,
       items: [
         {
-          iconPath: 'svg/pedastel.svg',
+          iconPath: '/svg/pedastel.svg',
           title: 'Tops',
           to: 'top',
           toPrec: true
         },
         {
-          iconPath: 'svg/book.svg',
+          iconPath: '/svg/book.svg',
           title: 'Mācības',
           to: 'index'
         },
         {
-          iconPath: 'svg/user.svg',
+          iconPath: '/svg/user.svg',
           title: 'Profils',
           to: 'profile',
           toPrec: true
@@ -101,9 +105,13 @@ export default {
         "top": "Tops",
         "profile": "Profils",
         "math": "Matemātika",
-        "tech": "Tehnoloģijas",
+        "technology": "Tehnoloģijas",
         "mech": "Inženierija",
         "science": "Zinātne",
+        "technology-1": "Ievads Javascript",
+        "technology-2": "Javascript selektori",
+        "technology-3": "Animācijas ar javascript",
+        "technology-4": "Dati no citām sistēmām",
       }
     }
   },
@@ -115,6 +123,8 @@ export default {
   },
   created(){
     DataStorage.initialize(this)
+    hljs.registerLanguage('javascript', javascript);
+    hljs.registerLanguage('html', html);
     this.$nextTick(()=>{
       if(!UserData.IsLoggedIn){
         this.$router.push({ name: 'login'})
@@ -178,7 +188,6 @@ export default {
   background: $color-bg-grey;
   width: 100% !important;
   overflow-x: hidden !important;
-
   &::-webkit-scrollbar {
     width: 4px;
   }
