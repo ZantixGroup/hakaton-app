@@ -11,10 +11,10 @@
             <v-spacer></v-spacer>
             <v-toolbar-title class="black--text">
               <div class="text-center">
-                My Page Title
+                {{ title1 }}
               </div>
               <div class="undertitle">
-                Subtitle or Additional Information
+                {{ subtitle1 }}
               </div>
             </v-toolbar-title>
             <v-spacer></v-spacer>
@@ -29,7 +29,6 @@
                 v-for="(item, index) in items"
                 :key="item.title"
             >
-                <v-spacer></v-spacer>
                 <v-col>
                     <v-row>
                         <v-list-item-content>
@@ -45,7 +44,7 @@
                                 dark      
                                 style="border: 7px solid #ec5757"
                                 >
-                                <h1 style="color: white">{{ item.icon }}</h1>
+                                <h1 style="color: white">{{ index+1 }}</h1>
                             </v-btn>
                         </v-list-item-action>
                     </v-row>
@@ -60,16 +59,13 @@
 
 <script>
 export default {
-    data () {
-      return {
-        dialog: false,
-        items: [
-          { icon: '1', title: 'Test', subtitle: 'Test' },
-          { icon: '2', title: 'Test', subtitle: 'Test' },
-          { icon: '3', title: 'Test', subtitle: 'Test' },
-        ]
-      }
-    },
+  name: "stbutton",
+  props: ["title1", "subtitle1", "items"],
+  data () {
+    return {
+      description: "among us"
+    }
+  },
 }
 </script>
 
