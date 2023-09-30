@@ -22,7 +22,9 @@
     </v-app-bar>
     <v-main>
       <v-container style="height: 100%;">
-        <Nuxt />
+        <template>
+          <Nuxt/>
+        </template>
       </v-container>
     </v-main>
     <v-footer
@@ -38,10 +40,10 @@
       </v-row>
       </v-spacer>
     </v-footer>
-    <v-bottom-navigation v-else v-model="activeCategory" horizontal>
-      <v-btn v-for="(item,i) in items" :key="i" :value="item.to" @click="navigateTo(item.to)" :class="activeCategory===item.to?'light-green accent-1 selected-btn':''">
+    <v-bottom-navigation v-else v-model="activeCategory" horizontal fixed>
+      <v-btn v-for="(item,i) in items" :key="i" :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="activeCategory===item.to?'selected-btn':''">
         <span v-if="!$vuetify.breakpoint.smAndDown">{{ item.title }}</span>
-        <v-icon color="green" x-large class="mr-0">{{ item.icon }}</v-icon>
+        <img :src="item.iconPath" height="35px" width="40px"/>
       </v-btn>
     </v-bottom-navigation>
   </v-app>
@@ -58,17 +60,17 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
+          iconPath: 'svg/pedastel.svg',
           title: 'Tops',
           to: 'top'
         },
         {
-          icon: 'mdi-eye',
+          iconPath: 'svg/book.svg',
           title: 'Mācības',
           to: 'index'
         },
         {
-          icon: 'mdi-chart-bubble',
+          iconPath: 'svg/user.svg',
           title: 'Profils',
           to: 'profile'
         },
@@ -89,9 +91,24 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="scss">
+.v-btn {
+  transition: 0.2s !important;
+}
+
+.v-btn:hover::before {
+  display: none !important;
+}
+
 .selected-btn {
-  border-radius: 5px !important;
-  margin-top: -20px !important;
+  border-radius: $border-radius !important;
+  background: $color-light-green !important;
+  margin-top: -10px !important;
+  height: 70px !important;  
+  transition: 0.2s !important
+}
+
+.icon {
+  color: $color-icons !important;
 }
 </style>
