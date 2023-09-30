@@ -8,8 +8,8 @@
     >
       <div class="green--text--better"
       >
-        <v-icon class="icon" @click="navigateTo('index')">mdi-home</v-icon>
-        <b>Sākumlapa</b>
+        <v-icon class="icon" @click="lastPage()">{{ activeCategory==='index'?'mdi-home':'mdi-arrow-left' }}</v-icon>
+        <b>{{ routeNames[activeCategory] }}</b>
     </div>
      <v-spacer v-if="!$vuetify.breakpoint.mobile"/>
      <div v-if="!$vuetify.breakpoint.mobile">
@@ -41,7 +41,7 @@
       </v-row>
       </v-spacer>
     </v-footer>
-    <v-bottom-navigation v-else v-model="activeCategory" horizontal fixed>
+    <v-bottom-navigation v-else horizontal fixed>
       <v-btn v-for="(item,i) in items" :key="i" :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="activeCategory===item.to?'selected-btn':''">
         <span v-if="!$vuetify.breakpoint.smAndDown">{{ item.title }}</span>
         <img :src="item.iconPath" height="35px" width="40px"/>
@@ -55,6 +55,10 @@ import ScoreDisplay from '~/components/ScoreDisplay.vue'
 import { DataStorage } from '~/storage/init'
 export default {
   name: 'DefaultLayout',
+  transition: {
+    name: 'test',
+    mode: 'out-in'
+  },
   data () {
     return {
       clipped: false,
@@ -81,17 +85,37 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js',
-      activeCategory: undefined
+      routeNames: {
+        "index": "Sākumlapa",
+        "top": "Tops",
+        "profile": "Profils",
+        "math": "Matemātika",
+        "tech": "Tehnoloģijas",
+        "mech": "Inženierija",
+        "science": "Zinātne",
+      }
     }
   },
   components: { ScoreDisplay },
+  computed: {
+    activeCategory(){
+      return this.$route.name
+    }
+  },
   created(){
     DataStorage.initialize(this)
   },
   methods: {
     navigateTo(page){
-      console.log(this.activeCategory)
       this.$router.push({ name: page})
+    },
+    lastPage(){
+      let a = this.activeCategory.split('-')
+      a.pop()
+      if(a.length === 0){
+        a = ['index']
+      }
+      this.navigateTo(a.join('-'))
     }
   }
 }
@@ -133,7 +157,9 @@ export default {
 
 .v-main {
   max-height: calc(100vh - 56px) !important;
-  overflow: scroll !important;
 }
 
+html, body {
+  overflow: hidden;
+}
 </style>
