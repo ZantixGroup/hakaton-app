@@ -1,12 +1,12 @@
 <template>
-  <v-row justify="center" align="center" style="height: 100%;" class="bg">
+  <v-row justify="center" align="center" class="bg">
     <v-col cols="12">
       <v-card flat>
         <div :class="($vuetify.breakpoint.mobile? $vuetify.breakpoint.xs?'mobile-grid':'mobile-grid':'d-flex justify-center margin-5')">
-          <ScienceSelect @click="changeToCategory('science')"/>
-          <MathSelect @click="changeToCategory('math')"/>
-          <MechSelect @click="changeToCategory('mech')"/>
-          <TechSelect @click="changeToCategory('tech')"/>
+          <SubjectBlock @click="changeToCategory('science')" title="Zinātne" description="Sistemātiska un kārtota patiesības meklēšana" color="red" score="25" maxScore="100"/>
+          <SubjectBlock @click="changeToCategory('mathematics')" title="Matemātika" description="Abstrakts skaitļu un lielumu pētījums" color="green" score="25" maxScore="100"/>
+          <SubjectBlock @click="changeToCategory('engineering')" title="Indžinierija" description="Izstrādā risinājumus reāliem izaicinājumiem" color="blue" score="25" maxScore="100"/>
+          <SubjectBlock @click="changeToCategory('technology')" title="Tehnoloģija" description="Inovatīvi rīki kas veido mūsu nākotni" color="orange" score="25" maxScore="100"/>
         </div>
       </v-card>
       
@@ -15,15 +15,13 @@
 </template>
 
 <script>
+import SubjectBlock from '~/components/SubjectBlock.vue';
 import TestAnimation from '~/components/TestAnimation.vue';
-import MathSelect from '~/components/subjectSelect/math.vue';
-import MechSelect from '~/components/subjectSelect/mech.vue';
-import ScienceSelect from '~/components/subjectSelect/science.vue';
-import TechSelect from '~/components/subjectSelect/tech.vue';
+
 export default {
     name: 'IndexPage',
     auth: false,
-    components: { TestAnimation, ScienceSelect, MathSelect, MechSelect, TechSelect },
+    components: { TestAnimation, SubjectBlock },
     methods: {
       changeToCategory(e){
         this.$router.push({ name: e})
@@ -33,13 +31,14 @@ export default {
 </script>
 <style scoped lang="scss">
 .mobile-grid {
-  display: grid;
-  width: 100% !important;
-  overflow: hidden;
-  grid-row: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 5px;
-  grid-row-gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  & > :global(.v-card){
+    flex: 1 0 calc(50% - 5px / 2);
+    margin: 0px !important;
+  }
 }
 
 .mobile-grid > * {
