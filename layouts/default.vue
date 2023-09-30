@@ -55,6 +55,9 @@
 import ScoreDisplay from '~/components/ScoreDisplay.vue'
 import { DataStorage } from '~/storage/init'
 import {UserData} from "~/storage/user";
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import html from 'highlight.js/lib/languages/vbscript-html';
 export default {
   name: 'DefaultLayout',
   transition: {
@@ -97,7 +100,10 @@ export default {
         "tech": "Tehnoloģijas",
         "mech": "Inženierija",
         "science": "Zinātne",
-        "tech-1": "Ievads Javascript"
+        "tech-1": "Ievads Javascript",
+        "tech-2": "Javascript selektori",
+        "tech-3": "Animācijas ar javascript",
+        "tech-4": "Dati no citām sistēmām",
       }
     }
   },
@@ -109,6 +115,8 @@ export default {
   },
   created(){
     DataStorage.initialize(this)
+    hljs.registerLanguage('javascript', javascript);
+    hljs.registerLanguage('html', html);
     this.$nextTick(()=>{
       if(!UserData.IsLoggedIn){
         this.$router.push({ name: 'login'})
