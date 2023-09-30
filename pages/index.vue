@@ -9,7 +9,7 @@
           <SubjectBlock @click="changeToCategory('technology')" title="Tehnoloģija" description="Inovatīvi rīki kas veido mūsu nākotni" color="orange" score="25" maxScore="100"/>
         </div>
       </v-card>
-      
+
     </v-col>
   </v-row>
 </template>
@@ -19,15 +19,16 @@ import SubjectBlock from '~/components/SubjectBlock.vue';
 import TestAnimation from '~/components/TestAnimation.vue';
 
 export default {
-    name: 'IndexPage',
-    auth: false,
-    components: { TestAnimation, SubjectBlock },
-    methods: {
-      changeToCategory(e){
-        this.$router.push({ name: e})
-      }
+  name: 'IndexPage',
+  auth: false,
+  components: { TestAnimation, SubjectBlock },
+  methods: {
+    changeToCategory(e){
+      this.$router.push({ name: e})
     }
+  }
 }
+
 </script>
 <style scoped lang="scss">
 .mobile-grid {
@@ -47,6 +48,7 @@ export default {
 .margin-5 > * {
     margin: 5px;
 }
+
 .col {
   padding: 0px !important;
   padding-inline: 5px !important;

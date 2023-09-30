@@ -1,26 +1,31 @@
 <template>
-  <div class="bg-gray">
-    <img src="/top.png" width="100%"/>
-    <v-simple-table>
+  <v-container class="bg-gray d-flex flex-column align-items-center">
+    <img src="/top.png" width="100%" style="max-width: 600px; align-self: center"/>
+    <v-simple-table >
     <template v-slot:default>
       <tbody>
         <tr
           v-for="item in leaderboard"
           :key="item.name"
-          class="bg-gray"
+          class="bg g-row bg-gray bg-gray-children"
+          @click="prevent"
         >
           <td><b>{{ item.place }}</b></td>
           <td>pfp-{{ item.avatar }}</td>
           <td><b>{{ item.name }}</b></td>
-          <td style="display: flex; align-items: center;"> <img src="svg/star.svg" height="20px" width="20px" style="float: left"/> <b style="float: right; margin-left: 10px;">{{ item.score }}</b></td>
+          <td style="display: flex; align-items: center; float:right"> <img src="svg/star.svg" height="20px" width="20px" style="float: left"/> <b style="float: right; margin-left: 10px;">{{ item.score }}</b></td>
         </tr>
       </tbody>
     </template>
   </v-simple-table>
-  </div>
+</v-container>
 </template>
 <script>
 export default {
+  transition: {
+    name: 'test',
+    mode: 'out-in'
+  },
     name: 'TopPage',
     data () {
     return {
@@ -39,7 +44,32 @@ export default {
     methods: {
       changeToCategory(e){
         this.$router.push({ name: e})
+      },
+      prevent(e){
+        e.preventDefault()
+        e.stopImmediatePropagation()
+        e.stopPropagation()
       }
     }
 }
 </script>
+<style scoped lang="scss">
+.bg-gray-children * {
+  background-color: $color-bg-grey !important;
+}
+.bg-gray {
+  background-color: $color-bg-grey !important;
+}
+.g-row {
+  border-color: transparent;
+  border: 0px;
+  outline: 3px;
+}
+
+.g-row * {
+  border-color: transparent !important;
+  border: 0px !important;
+  outline: 3px;
+  pointer-events: none;
+}
+</style>
