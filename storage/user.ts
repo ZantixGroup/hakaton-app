@@ -33,8 +33,10 @@ export class UserData {
         avatar: number | undefined
       } = JSON.parse(storage)
       const token = this._context.$auth.strategy.token.get()
-      if (token !== undefined && token && a.username && a.surname && a.id && a.score !== undefined && a.s_level !== undefined && a.t_level !== undefined && a.e_level !== undefined && a.m_level !== undefined && a.avatar !== undefined) {
-        this.setUser(a.username, a.surname, a.id, a.score, a.s_level, a.t_level, a.e_level, a.m_level, a.avatar)
+      if (token !== undefined && token && a.username && a.surname && a.score !== undefined && a.s_level !== undefined && a.t_level !== undefined && a.e_level !== undefined && a.m_level !== undefined && a.avatar !== undefined) {
+        // this._context.$auth.loginWith("local", {})
+        this.setUser(a.username, a.surname, 0, a.score, a.s_level, a.t_level, a.e_level, a.m_level, a.avatar)
+        // this.refetchUserData()
       } else {
         this.wipeData()
       }
@@ -43,14 +45,52 @@ export class UserData {
     }
   }
 
+  private static refetchUserData() {
+    DataStorage.context.$axios.get(`https://api-hakatons.dev.zantix.net/api/v1/me`).then((response: any) => {
+      const user = response.data.data
+      if (user.name !== undefined) {
+        const a = user
+        this.setUser(a.name, a.surname, a.id, a.score, a.s_level, a.t_level, a.e_level, a.m_level, a.avatar)
+        window.location.reload()
+      }
+    })
+  }
+
+  public static login(email: string, password: string){
+    return new Promise((resolve, reject)=>{
+      // this._context.$auth.loginWith('local', { params: { prompt: 'select_account' } })
+      this._context.$axios.post('https://api-hakatons.dev.zantix.net/api/v1/login', {
+        email,
+        password
+      }).then((v:any) => {
+        
+        this._context.$auth.strategy.token.set(v.data.access_token)
+        const a = v.data.user
+        this.setUser(a.name, a.surname, a.id, a.score, a.s_level, a.t_level, a.e_level, a.m_level, a.avatar)
+      })
+    })
+  }
+
+  public static logout(){
+    return new Promise((resolve)=>{
+      this._context.$auth.get('https://api-hakatons.dev.zantix.net/api/v1/get').then(()=>{
+        this.wipeData()
+      })
+    })
+  }
+
   private static saveState() {
     if (this.isLoggedIn) {
       const obj = {
-        name: this.name,
+        username: this.username,
         surname: this.surname,
-        isLoggedIn: this.isLoggedIn,
-        id: this.id,
         score: this.score,
+        id: this.id,
+        s_level: this.s_level,
+        t_level: this.t_level,
+        e_level: this.e_level,
+        m_level: this.m_level,
+        avatar: this.avatar,
       }
       GeneralStore.setValue(['user'], obj)
       localStorage.setItem('user', JSON.stringify(obj))
