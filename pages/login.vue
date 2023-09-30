@@ -24,7 +24,7 @@
           <v-btn text>Izveidot kontu</v-btn>
         </div>
       </v-form>
-      <p style="color: white; margin-top: auto;">&copy; {{ new Date().getFullYear() }} SIA Zantix visas tiesības aizsargātas</p>
+      <p style="color: white; margin-top: auto;">&copy; {{ new Date().getFullYear() }} SIA Zantix - Visas tiesības aizsargātas</p>
     </div>
   </v-app>
 </template>
@@ -61,7 +61,9 @@ export default {
   },
   methods: {
     login() {
-      UserData.login(this.form.email, this.form.password)
+      UserData.login(this.form.email, this.form.password).then(isSuccess => {
+        this.isCorrect = isSuccess
+      })
     }
   }
 }

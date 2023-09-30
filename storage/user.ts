@@ -67,6 +67,9 @@ export class UserData {
         const a = v.data.user
         this.setUser(a.name, a.surname, a.id, a.score, a.s_level, a.t_level, a.e_level, a.m_level, a.avatar)
         this._context.$router.push('/');
+        resolve(true)
+      }).catch((e)=>{
+        resolve(false)
       })
     })
   }
