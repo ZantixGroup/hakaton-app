@@ -20,7 +20,6 @@ export default {
             {title: "Mech", subtitle: "mech"}, 
             {title: "Mech", subtitle:"mech"}]
         };
-    },
-    components: { StudyButtons }
+    }
 }
 </script>

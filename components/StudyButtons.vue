@@ -27,7 +27,7 @@
           <v-list class="transparent no-outline">
             <v-list-item
                 v-for="(item, index) in items"
-                :key="item.title"
+                :key="index"
             >
                 <v-col>
                     <v-row>

@@ -20,7 +20,6 @@ export default {
             {title: "Meth", subtitle: "meth"}, 
             {title: "Meth", subtitle:"meth"}]
         };
-    },
-    components: { StudyButtons }
-}
+    }
+  }
 </script>

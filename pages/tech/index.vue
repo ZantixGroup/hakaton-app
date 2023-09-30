@@ -3,10 +3,11 @@
       <v-col cols="12">
         <StudyButtons :title1="title" :subtitle1="subtitle" :items="items"></StudyButtons>
         <StudyButtons :title1="title" :subtitle1="subtitle" :items="items"></StudyButtons>
-      </v-col>
-    </v-row>
-  </template>
+    </v-col>
+  </v-row>
+</template>
 <script>
+
 import StudyButtons from '~/components/StudyButtons.vue';
 
 export default {
@@ -20,7 +21,6 @@ export default {
             {title: "Tech", subtitle: "tech"}, 
             {title: "Tech", subtitle:"tech"}]
         };
-    },
-    components: { StudyButtons }
+    }
 }
 </script>
