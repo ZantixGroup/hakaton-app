@@ -1,5 +1,5 @@
 <template>
-  <v-app style="overflow: hidden; height: 100vh">
+  <v-app class="app">
     <div class="register-main">
       <div class="register-decoration">
         <div/>
@@ -23,6 +23,12 @@ export default {
 </script>
 
 <style scoped>
+.app {
+  overflow: hidden;
+  height: 100vh;
+  background-color: #FFC532;
+}
+
 .register-main {
   display: flex;
   justify-content: center;
@@ -48,10 +54,59 @@ export default {
   background-color: white;
 }
 
-@media only screen and (max-width: 975px) {
+@media only screen and (min-width: 1200px) {
+  .app {
+    overflow: hidden;
+  }
+
+  .register-decoration {
+    animation: decoration-div-in 1s forwards;
+  }
+
+  .register-decoration > div {
+    animation: decoration-cube-in 1s forwards;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .app {
+    overflow: auto;
+  }
+
   .register-decoration,
   .register-decoration > div {
+    animation: decoration-out 1s forwards;
+  }
+}
+
+@keyframes decoration-out {
+  0% {
+
+  } 100% {
     width: 0;
+    height: 0;
+  }
+}
+
+@keyframes decoration-div-in {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 50vw;
+    height: 200vh;
+  }
+}
+
+@keyframes decoration-cube-in {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 70vw;
+    height: 200vh;
   }
 }
 </style>

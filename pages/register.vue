@@ -3,7 +3,7 @@
     <div class="register-container">
       <v-form class="register" ref="form" @submit.prevent="register()">
         <h1>Reģistrācija</h1>
-        <div style="display: flex; gap: 10px">
+        <div class="full-name">
           <div class="input-container">
             <p>Vārds</p>
             <v-text-field v-model="form.name" placeholder="Ievadiet Vārdu" color="#FFC532" :rules="nameRules" outlined></v-text-field>
@@ -62,10 +62,12 @@ export default {
       nameRules: [
         value => !!value || 'Lauks ir obligāts',
         (v) => (v !== undefined && v.length < 256) || 'Vārdam jābūt īsākam',
+        (v) => !Number.isInteger(Number(v)) || 'Vārds var sastāvēt tikai no burtiem',
       ],
       surnameRules: [
         value => !!value || 'Lauks ir obligāts',
         (v) => (v !== undefined && v.length < 256) || 'Uzvārdam jābūt īsākam',
+        (v) => !Number.isInteger(Number(v)) || 'Uzvārds var sastāvēt tikai no burtiem',
       ],
       emailRules: [
         value => !!value || 'Lauks ir obligāts',
@@ -90,7 +92,7 @@ export default {
     register() {
       if (!this.$refs.form.validate() ) { return }
       this.$axios.post('/register', {
-        'avatar': 1,
+        'avatar': Math.floor(Math.random() * 4) + 1,
         'name': this.form.name,
         'surname': this.form.surname,
         'email': this.form.email,
@@ -107,6 +109,7 @@ export default {
 </script>
 
 <style scoped>
+
 .register-container {
   width: 100%;
   height: 100vh;
@@ -123,7 +126,7 @@ export default {
   border-radius: 15px;
   padding: 32px;
   background-color: white;
-  min-width: 400px;
+  width: 500px;
 }
 
 .register > h1 {
@@ -132,6 +135,11 @@ export default {
   font-size: 38px;
   color: #FFC532;
   margin-bottom: 10px;
+}
+
+.full-name {
+  display: flex;
+  gap: 10px
 }
 
 .input-container > p {
@@ -167,7 +175,24 @@ export default {
   color: #CDCDCD;
   margin-top: 10px;
 }
+
 .additional-buttons > button:hover {
   color: initial;
+}
+
+@media only screen and (max-width: 550px) {
+  .register {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .register {
+    width: 350px;
+  }
+  .full-name {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 </style>
