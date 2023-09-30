@@ -1,8 +1,8 @@
 <template>
-  <v-row justify="center" align="center">
+  <v-row justify="center" align="center" style="height: 100%;">
     <v-col cols="12">
       <v-card flat>
-        <div :class="($vuetify.breakpoint.mobile?'mobile-grid':'d-flex  justify-space-between')">
+        <div :class="($vuetify.breakpoint.mobile? $vuetify.breakpoint.xs?'mobile-grid':'mobile-grid':'d-flex justify-center margin-5')">
           <ScienceSelect @click="changeToCategory('science')"/>
           <MathSelect @click="changeToCategory('math')"/>
           <MechSelect @click="changeToCategory('mech')"/>
@@ -41,5 +41,8 @@ export default {
 
 .mobile-grid > * {
   margin: 5px;
+}
+.margin-5 > * {
+    margin: 5px;
 }
 </style>
