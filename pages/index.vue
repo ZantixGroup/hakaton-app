@@ -21,6 +21,10 @@ import MechSelect from '~/components/subjectSelect/mech.vue';
 import ScienceSelect from '~/components/subjectSelect/science.vue';
 import TechSelect from '~/components/subjectSelect/tech.vue';
 export default {
+  transition: {
+    name: 'test',
+    mode: 'out-in'
+  },
     name: 'IndexPage',
     auth: false,
     components: { TestAnimation, ScienceSelect, MathSelect, MechSelect, TechSelect },
