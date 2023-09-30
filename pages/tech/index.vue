@@ -8,6 +8,7 @@
     </v-row>
   </template>
 <script>
+
 import StudyButtons from '~/components/StudyButtons.vue';
 
 export default {
@@ -50,7 +51,6 @@ export default {
               {title: "Modernie lielo datu rīki", subtitle: "Kā ChatGPT un citi rīki integrējas darba gaitā", locked: true },
             ]
         };
-    },
-    components: { StudyButtons }
+    }
 }
 </script>

@@ -14,11 +14,11 @@ export default {
     components: { StudyButtons },
     data() {
         return {
-            title: "Science",
-            subtitle: "science",
+            title: "Mech",
+            subtitle: "mech",
             items: [
-            {title: "Science", subtitle: "science"}, 
-            {title: "Science", subtitle:"science"}]
+            {title: "Mech", subtitle: "mech"}, 
+            {title: "Mech", subtitle:"mech"}]
         };
     }
 }
