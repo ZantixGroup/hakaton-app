@@ -59,9 +59,12 @@
 </template>
 
 <script>
-import ScoreDisplay from '~/components/ScoreDisplay.vue';
-import { DataStorage } from '~/storage/init';
-import { UserData } from "~/storage/user";
+import ScoreDisplay from '~/components/ScoreDisplay.vue'
+import { DataStorage } from '~/storage/init'
+import {UserData} from "~/storage/user";
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import html from 'highlight.js/lib/languages/vbscript-html';
 export default {
   name: 'DefaultLayout',
   transition: {
@@ -75,18 +78,18 @@ export default {
       fixed: false,
       items: [
         {
-          iconPath: 'svg/pedastel.svg',
+          iconPath: '/svg/pedastel.svg',
           title: 'Tops',
           to: 'top',
           toPrec: true
         },
         {
-          iconPath: 'svg/book.svg',
+          iconPath: '/svg/book.svg',
           title: 'Mācības',
           to: 'index'
         },
         {
-          iconPath: 'svg/user.svg',
+          iconPath: '/svg/user.svg',
           title: 'Profils',
           to: 'profile',
           toPrec: true
@@ -104,6 +107,10 @@ export default {
         "tech": "Tehnoloģijas",
         "mech": "Inženierija",
         "science": "Zinātne",
+        "tech-1": "Ievads Javascript",
+        "tech-2": "Javascript selektori",
+        "tech-3": "Animācijas ar javascript",
+        "tech-4": "Dati no citām sistēmām",
       }
     }
   },
@@ -115,6 +122,8 @@ export default {
   },
   created(){
     DataStorage.initialize(this)
+    hljs.registerLanguage('javascript', javascript);
+    hljs.registerLanguage('html', html);
     this.$nextTick(()=>{
       if(!UserData.IsLoggedIn){
         this.$router.push({ name: 'login'})

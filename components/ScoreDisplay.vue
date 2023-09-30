@@ -1,6 +1,6 @@
 <template>
   <v-btn rounded outlined elevation="0" plain class="green-border" @click="logins">
-    <img src="svg/star.svg" height="20px" width="20px" />
+    <img src="/svg/star.svg" height="20px" width="20px" />
     {{ score }}
   </v-btn>
 </template>
