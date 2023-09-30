@@ -30,6 +30,10 @@ export default {
   plugins: [
   ],
 
+  router: {
+    middleware: ['auth'],
+  },
+
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -46,18 +50,20 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    
+    '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: process.env.API_ENDPOINT,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      lang: 'lv'
     }
   },
 
@@ -89,5 +95,16 @@ export default {
       name: 'page',
       mode: 'out-in'
     }
-  }
+  },
+
+  auth: {
+    redirect: {
+      login: '/login',
+      callback: '/auth/azureCallback',
+      home: false,
+    },
+    strategies: {
+      local: { scheme: 'local', /* ... */ },
+    }
+  },
 }

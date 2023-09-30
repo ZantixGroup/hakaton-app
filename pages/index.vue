@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" align="center" style="height: 100%;">
+  <v-row justify="center" align="center" style="height: 100%;"  class="bg-gray">
     <v-col cols="12">
       <v-card flat>
         <div :class="($vuetify.breakpoint.mobile? $vuetify.breakpoint.xs?'mobile-grid':'mobile-grid':'d-flex justify-center margin-5')">
@@ -22,6 +22,7 @@ import MechSelect from '~/components/subjectSelect/mech.vue'
 import TechSelect from '~/components/subjectSelect/tech.vue'
 export default {
     name: 'IndexPage',
+    auth: false,
     components: { TestAnimation, ScienceSelect, MathSelect, MechSelect, TechSelect },
     methods: {
       changeToCategory(e){
