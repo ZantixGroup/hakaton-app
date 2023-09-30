@@ -25,13 +25,13 @@ export default {
 <style scoped>
 .app {
   overflow: hidden;
-  height: 100vh
+  height: 100vh;
+  background-color: #80DB56;
 }
 
 .login-main {
   display: flex;
   justify-content: center;
-  background-color: #80DB56;
 }
 
 .login-decoration {
