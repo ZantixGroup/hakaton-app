@@ -63,10 +63,10 @@ export class UserData {
         email,
         password
       }).then((v:any) => {
-        
         this._context.$auth.strategy.token.set(v.data.access_token)
         const a = v.data.user
         this.setUser(a.name, a.surname, a.id, a.score, a.s_level, a.t_level, a.e_level, a.m_level, a.avatar)
+        resolve(true)
       })
     })
   }
