@@ -20,7 +20,6 @@ export default {
             {title: "Science", subtitle: "science"}, 
             {title: "Science", subtitle:"science"}]
         };
-    },
-    components: { StudyButtons }
+    }
 }
 </script>

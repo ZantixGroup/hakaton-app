@@ -3,10 +3,38 @@
     <v-col cols="12">
       <v-card flat>
         <div :class="($vuetify.breakpoint.mobile? $vuetify.breakpoint.xs?'mobile-flex':'mobile-flex':'desktop-grid')">
-          <SubjectBlock @click="changeToCategory('science')" title="Zinātne" description="Sistemātiska un kārtota patiesības meklēšana" color="red" score="25" maxScore="100"/>
-          <SubjectBlock @click="changeToCategory('mathematics')" title="Matemātika" description="Abstrakts skaitļu un lielumu pētījums" color="green" score="25" maxScore="100"/>
-          <SubjectBlock @click="changeToCategory('engineering')" title="Indžinierija" description="Izstrādā risinājumus reāliem izaicinājumiem" color="blue" score="25" maxScore="100"/>
-          <SubjectBlock @click="changeToCategory('technology')" title="Tehnoloģija" description="Inovatīvi rīki kas veido mūsu nākotni" color="orange" score="25" maxScore="100"/>
+          <SubjectBlock 
+            @click="changeToCategory('science')" 
+            title="Zinātne" 
+            description="Sistemātiska un kārtota patiesības meklēšana" 
+            color="red"
+            score="25"
+            maxScore="100"
+            svgPath="/svg/Science.svg"/>
+          <SubjectBlock 
+            @click="changeToCategory('mathematics')" 
+            title="Matemātika" 
+            description="Abstrakts skaitļu un lielumu pētījums" 
+            color="green" 
+            score="25" 
+            maxScore="100"
+            svgPath="/svg/Math.svg"/>
+          <SubjectBlock 
+            @click="changeToCategory('engineering')" 
+            title="Indžinierija" 
+            description="Izstrādā risinājumus reāliem izaicinājumiem" 
+            color="blue" 
+            score="25" 
+            maxScore="100"
+            svgPath="/svg/Engineering.svg"/>
+          <SubjectBlock
+            @click="changeToCategory('technology')" 
+            title="Tehnoloģija" 
+            description="Inovatīvi rīki kas veido mūsu nākotni" 
+            color="orange" 
+            score="25" 
+            maxScore="100"
+            svgPath="/svg/Technology.svg"/>
         </div>
       </v-card>
 
@@ -46,9 +74,9 @@ export default {
 }
 
 .desktop-grid {
+  margin-top: 4rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: auto auto auto auto;
   gap: 5px;
 
   & > :global(.v-card){

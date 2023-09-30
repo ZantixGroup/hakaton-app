@@ -35,6 +35,7 @@
         <b>{{ score }}/{{ maxScore }}</b>
       </div>
     </div>
+    <img class="background-icon" :src="svgPath" />
   </v-card>
 </template>
 <script>
@@ -49,6 +50,10 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.v-card {
+  overflow: hidden;
+}
+
 .card-container {
   height: calc((100vh - 112px - 5px) / 2);
   &.md { height: auto }
@@ -77,7 +82,6 @@ export default {
   &.xs { font-size: 1.75rem; }
 }
 
-
 .red {
   background: $color-card-red !important;
 }
@@ -89,5 +93,13 @@ export default {
 }
 .orange {
   background: $color-card-orange !important;
+}
+
+.background-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 145%;
+  opacity: 0.1;
 }
 </style>
