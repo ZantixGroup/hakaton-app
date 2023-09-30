@@ -7,7 +7,6 @@
     <div class="login-main">
       <v-main>
         <Nuxt />
-<!--        &copy; {{ new Date().getFullYear() }} SIA Zantix visas tiesības aizsargātas-->
       </v-main>
       <div class="login-decoration">
         <div/>
@@ -48,7 +47,7 @@ export default {
   left: 75%;
   transform: translate(-50%,-50%) rotate(-15deg);
   width: 70vw;
-  height: 150vh;
+  height: 200vh;
   background-color: white;
 }
 

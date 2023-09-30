@@ -1,29 +1,30 @@
 <template>
   <v-app>
     <div class="login-container">
-     <v-form class="login" @submit.prevent="login()">
-       <h1>Pieslēgšanās</h1>
-       <div class="input-container">
-         <p>E-pasts</p>
-         <v-text-field v-model="form.email" placeholder="Ievadiet e-pastu" color="green" :rules="emailRules" outlined></v-text-field>
-       </div>
-       <div class="input-container">
-         <p>Parole</p>
-         <v-text-field v-model="form.password" placeholder="Ievadiet paroli" color="green" :rules="passwordRules" outlined type="password"></v-text-field>
-       </div>
-       <v-alert
-         v-if="!isCorrect"
-         dense
-         type="error"
-       >Nepareizs epasts vai parole!</v-alert>
-       <v-btn type="submit" color="#80DB56" height="50px">
-         Pieslēgties
-       </v-btn>
-       <div class="additional-buttons">
-         <v-btn text>Aizmirsi paroli?</v-btn>
-         <v-btn text>Izveidot kontu</v-btn>
-       </div>
-     </v-form>
+      <v-form class="login" @submit.prevent="login()">
+        <h1>Pieslēgšanās</h1>
+        <div class="input-container">
+          <p>E-pasts</p>
+          <v-text-field v-model="form.email" placeholder="Ievadiet e-pastu" color="green" :rules="emailRules" outlined></v-text-field>
+        </div>
+        <div class="input-container">
+          <p>Parole</p>
+          <v-text-field v-model="form.password" placeholder="Ievadiet paroli" color="green" :rules="passwordRules" outlined type="password"></v-text-field>
+        </div>
+        <v-alert
+          v-if="!isCorrect"
+          dense
+          type="error"
+        >Nepareizs epasts vai parole!</v-alert>
+        <v-btn type="submit" color="#80DB56" height="50px">
+          Pieslēgties
+        </v-btn>
+        <div class="additional-buttons">
+          <v-btn text>Aizmirsi paroli?</v-btn>
+          <v-btn text>Izveidot kontu</v-btn>
+        </div>
+      </v-form>
+      <p style="color: white; margin-top: auto;">&copy; {{ new Date().getFullYear() }} SIA Zantix visas tiesības aizsargātas</p>
     </div>
   </v-app>
 </template>
@@ -72,12 +73,14 @@ export default {
   height: 100vh;
   background-color: #80DB56;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-content: center;
   align-items: center;
 }
 
 .login {
+  margin-top: auto;
   border-radius: 15px;
   padding: 32px;
   background-color: white;
