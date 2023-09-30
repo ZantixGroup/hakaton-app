@@ -13,10 +13,11 @@
     </div>
      <v-spacer v-if="!$vuetify.breakpoint.mobile"/>
      <div v-if="!$vuetify.breakpoint.mobile">
-      <v-btn v-for="(item,i) in items" :key="i" text flat :value="item.to" @click="navigateTo(item.to)" :class="activeCategory===item.to?'light-green accent-1 selected-btn':''">
+      <v-btn v-for="(item,i) in items" :key="i" text  :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="item.to === 'index' ? (activeCategory !== 'top' && activeCategory !== 'profile' ? 'selected-btn-top': ''):(item.to === activeCategory? 'selected-btn-top':'')">
         <span v-if="!$vuetify.breakpoint.smAndDown">{{ item.title }}</span>
-        <v-icon x-large class="mr-0 icon">{{ item.icon }}</v-icon>
+        <img :src="item.iconPath" height="35px" width="40px"/>
       </v-btn>
+
      </div>
      <v-spacer/>
      <ScoreDisplay/>
@@ -42,7 +43,7 @@
       </v-spacer>
     </v-footer>
     <v-bottom-navigation v-else horizontal fixed>
-      <v-btn v-for="(item,i) in items" :key="i" :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="activeCategory===item.to?'selected-btn':''">
+      <v-btn v-for="(item,i) in items" :key="i" :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="item.to === 'index' ? (activeCategory !== 'top' && activeCategory !== 'profile' ? 'selected-btn': ''):(item.to === activeCategory? 'selected-btn':'')">
         <span v-if="!$vuetify.breakpoint.smAndDown">{{ item.title }}</span>
         <img :src="item.iconPath" height="35px" width="40px"/>
       </v-btn>
@@ -68,7 +69,8 @@ export default {
         {
           iconPath: 'svg/pedastel.svg',
           title: 'Tops',
-          to: 'top'
+          to: 'top',
+          toPrec: true
         },
         {
           iconPath: 'svg/book.svg',
@@ -78,7 +80,8 @@ export default {
         {
           iconPath: 'svg/user.svg',
           title: 'Profils',
-          to: 'profile'
+          to: 'profile',
+          toPrec: true
         },
       ],
       miniVariant: false,
@@ -116,7 +119,7 @@ export default {
         a = ['index']
       }
       this.navigateTo(a.join('-'))
-    }
+    },
   }
 }
 </script>
@@ -134,6 +137,13 @@ export default {
   border-radius: $border-radius !important;
   background: $color-light-green !important;
   margin-top: -10px !important;
+  height: 70px !important;  
+  transition: 0.2s !important
+}
+.selected-btn-top {
+  border-radius: $border-radius !important;
+  background: $color-light-green !important;
+  margin-bottom: -20px !important;
   height: 70px !important;  
   transition: 0.2s !important
 }
