@@ -104,13 +104,13 @@ export default {
         "top": "Tops",
         "profile": "Profils",
         "math": "Matemātika",
-        "tech": "Tehnoloģijas",
+        "technology": "Tehnoloģijas",
         "mech": "Inženierija",
         "science": "Zinātne",
-        "tech-1": "Ievads Javascript",
-        "tech-2": "Javascript selektori",
-        "tech-3": "Animācijas ar javascript",
-        "tech-4": "Dati no citām sistēmām",
+        "technology-1": "Ievads Javascript",
+        "technology-2": "Javascript selektori",
+        "technology-3": "Animācijas ar javascript",
+        "technology-4": "Dati no citām sistēmām",
       }
     }
   },

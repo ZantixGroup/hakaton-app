@@ -109,7 +109,7 @@ export default {
         },
 
         nextCat(){
-          this.$router.push({ name: "tech-3"})
+          this.$router.push({ name: "technology-3"})
         }
     },
 }
