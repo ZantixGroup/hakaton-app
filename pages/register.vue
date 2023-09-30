@@ -62,10 +62,12 @@ export default {
       nameRules: [
         value => !!value || 'Lauks ir obligāts',
         (v) => (v !== undefined && v.length < 256) || 'Vārdam jābūt īsākam',
+        (v) => !Number.isInteger(Number(v)) || 'Vārds var sastāvēt tikai no burtiem',
       ],
       surnameRules: [
         value => !!value || 'Lauks ir obligāts',
         (v) => (v !== undefined && v.length < 256) || 'Uzvārdam jābūt īsākam',
+        (v) => !Number.isInteger(Number(v)) || 'Uzvārds var sastāvēt tikai no burtiem',
       ],
       emailRules: [
         value => !!value || 'Lauks ir obligāts',
@@ -90,7 +92,7 @@ export default {
     register() {
       if (!this.$refs.form.validate() ) { return }
       this.$axios.post('/register', {
-        'avatar': 1,
+        'avatar': Math.floor(Math.random() * 4) + 1,
         'name': this.form.name,
         'surname': this.form.surname,
         'email': this.form.email,
