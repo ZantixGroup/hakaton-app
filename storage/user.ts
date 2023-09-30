@@ -66,7 +66,7 @@ export class UserData {
         this._context.$auth.strategy.token.set(v.data.access_token)
         const a = v.data.user
         this.setUser(a.name, a.surname, a.id, a.score, a.s_level, a.t_level, a.e_level, a.m_level, a.avatar)
-        resolve(true)
+        this._context.$router.push('/');
       })
     })
   }
@@ -91,6 +91,7 @@ export class UserData {
         e_level: this.e_level,
         m_level: this.m_level,
         avatar: this.avatar,
+        isLoggedIn: this.isLoggedIn
       }
       GeneralStore.setValue(['user'], obj)
       localStorage.setItem('user', JSON.stringify(obj))
