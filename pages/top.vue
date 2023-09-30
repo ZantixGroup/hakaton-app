@@ -1,13 +1,14 @@
 <template>
   <div class="bg-gray">
-    <img src="/top.png" width="100%"/>
-    <v-simple-table>
+    <img src="/top.png" width="100%" style="max-width: 600px;"/>
+    <v-simple-table >
     <template v-slot:default>
       <tbody>
         <tr
           v-for="item in leaderboard"
           :key="item.name"
-          class="bg-gray"
+          class="bg-gray g-row"
+          @click="prevent"
         >
           <td><b>{{ item.place }}</b></td>
           <td>pfp-{{ item.avatar }}</td>
@@ -39,7 +40,26 @@ export default {
     methods: {
       changeToCategory(e){
         this.$router.push({ name: e})
+      },
+      prevent(e){
+        e.preventDefault()
+        e.stopImmediatePropagation()
+        e.stopPropagation()
       }
     }
 }
 </script>
+<style scoped>
+.g-row {
+  border-color: transparent;
+  border: 0px;
+  outline: 3px;
+}
+
+.g-row * {
+  border-color: transparent !important;
+  border: 0px !important;
+  outline: 3px;
+  pointer-events: none;
+}
+</style>
