@@ -3,79 +3,69 @@
   <div class="d-flex justify-center">
     <v-card max-width="800px" >
     <v-card-title>
-      Ievads Javascript
+      Vienkāršas animācijas un objektu kustība
     </v-card-title>
     <v-card-text>
-      Javascript ir moderna programēšanas valoda paredzēta prieks WEB izstrādes. 
-      Javascipt tiek bieži izmantots, lai piešķirtu pogām funkcionalitāti -
+      Animācijas iespējams izveidot izmantojot "animejs" pakotni. Šī pakotne tiks izmantota visos piemēros.
+      Pašas elementārākās operācijas ir bloku pārvietošana izmantojot `translateX` css stilu.
       <div>
-        <CodePreview :code="btnDisplayCode">
+        <CodePreview :code="task1Code" :htmlCode="task1Html">
           <template v-slot:html>
-            <v-btn :color="isBtnClicked?'error':'primary'" @click="changeBtnColor()">
-              {{ !isBtnClicked?'Nosklišķiniet mani!':'Krāsa noaminīta uz sarkanu'}}
-            </v-btn>
-          </template>
-        </CodePreview>
-      </div>
-      Iegūtu datus no citām sistēmām -
-      <div>
-        <CodePreview :code="tableDisplayCode">
-          <template v-slot:html>
-            <div class="d-flex flex-column">
-              <v-btn
-              class="my-2"
-              color="primary"
-              :loading="isLoadingTableData"
-              :disabled="isLoadingTableData"
-              @click="loadFakeApi">Ielādēt datus </v-btn>
-              <v-simple-table class="mx-4 my-2" style="width:100%">
-              <template v-slot:default>
-                <thead>
-                  <tr>
-                    <th class="text-left">
-                      Vārds
-                    </th>
-                    <th class="text-left">
-                      Punkti
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    v-for="item in fakeTable"
-                    :key="item.name"
-                  >
-                    <td >{{ item.name }}</td>
-                    <td >{{ item.points }}</td>
-                  </tr>
-                </tbody>
-              </template>
-            </v-simple-table>
-            </div>
-           
-          </template>
-        </CodePreview>
-      </div>
-      Vai arī veidotu citas advancētās funkcionalitātes -
-      <div> 
-        <CodePreview :code="animeDisplayCode">
-          <template v-slot:html>
-            <div class="grid mx-4">
-              <div v-for="i in gridArr" class="grid-element" />
+            <div style="gap: 5p; width: 200px;">
+              <div class="grid-element task-1" />
+              <div class="grid-element task-2" />
+              <div class="grid-element task-3" />
             </div>
           </template>
         </CodePreview>
       </div>
-      
+      Ir arī iespējams pārvaldīt specifiskus laika intervālus. Sekojošajā piemērā ar slider palīdzību var izvēlēties cik tālu animācijā ir noteiktais objekts.
+      <div>
+        <CodePreview :code="task1Code" :htmlCode="task1Html">
+          <template v-slot:html>
+            <div style="gap: 5p; width: 200px;">
+              <div class="grid-element task-4" />
+              <div class="grid-element task-5" />
+              <div class="grid-element task-6" />
+              <v-slider
+                max="100"
+                min="0"
+                @input="changeAnim"
+              ></v-slider>
+            </div>
+          </template>
+        </CodePreview>
+      </div>
+      <h2 class="my-3">Uzdevums</h2>
+      Lai pabeigtu šo DEMO gala uzdevumā nepieciešams atbildēt uz izvēles jautājumu.
+      <div>
+        Vai ir iespējams izveidot animāciju, kura iet mūžīgi?
+        <v-radio-group v-model="radioChoice">
+          <v-radio
+            :label="`Nē, nav iespējams`"
+            :value="0"
+          ></v-radio>
+          <v-radio
+            :label="`Ir iespējams, bet tikai ļoti noteiktos gadījumos`"
+            :value="1"
+          ></v-radio>
+          <v-radio
+            :label="`Ir iespējams`"
+            :value="2"
+          ></v-radio>
+        </v-radio-group>
+        <v-btn :disabled="doneTask" color="primary" @click="checkCode()">Pārbaudīt</v-btn>
+        <v-alert color="error" class="my-2 mx-2" v-if="testFail" style="color: white">
+          <v-icon color="white" class="mx-2">mdi-alert</v-icon> Nepareizi!
+        </v-alert>
+      </div>
       <v-card-actions>
-        Visi šie uzdevumi tiks praktiski parādīti tālākās lapās - 
         <v-spacer/>
-      <v-btn color="primary" text>
-        Tālāk
-        <v-icon>mdi-arrow-right</v-icon>
+      <v-btn v-if="doneTask" color="primary" text @click="nextCat()">
+        Pabeigt DEMO
+        <v-icon>mdi-arrow-up</v-icon>
       </v-btn>
       </v-card-actions>
-      
     </v-card-text>
   </v-card>
   </div>
@@ -85,76 +75,138 @@
 import anime from 'animejs';
 import CodePreview from '~/components/CodePreview.vue';
 export default {
-  name: 'JS-Task-1',
+  name: 'JS-Task-3',
   data(){
     return {
-      tab: 'html',
-      isBtnClicked: false,
-      btnDisplayCode: `
-      let btn = document.getElemenyById('btn') // Atrod pogas elementu
-      btn.onclick = ()=>{ // Kad to noklišķina
-        btn.color = "red"; // Nomaina krāsu uz sarkano
-      }`,
-      tableDisplayCode: `
-        let tableData = []
-        let btn = document.getElemenyById('btn') 
-        btn.onclick = ()=>{
-          let data = loadFromApi(); // Ielādē servera datus
-          for(let i =0; i < data.length; i++){ // Iziet tiem cauri
-            tableData.push(parseServerData(data[i])) // Katru elementu pārvēršs lietojamā formā
-          }
-        }
+      task1Code: `
+      anime({
+        targets: '.task-1', // Izvēlas visus elementus ar klasi "task-1" priekš animācijas
+        translateX: 270, // Cik pikseļus pārvietoties X virzienā
+        direction: 'alternate', // Kāda virzienā veikt animācija. Šajā gadījuma pārvietojoties pa labi, un tad agriežoties
+        loop: true, // Vai atkārtot šo animāciju?
+        easing: 'easeInOutSine' // Funkcija, kuru izmanto prieks animācijas aprēķina
+      });
+      anime({
+        targets: '.task-2',
+        translateX: 180,
+        direction: 'alternate',
+        loop: true,
+        easing: 'easeInOutSine'
+      });
+      anime({
+        targets: '.task-3',
+        translateX: 90,
+        direction: 'alternate',
+        loop: true,
+        easing: 'easeInOutSine'
+      });
       `,
-      animeDisplayCode: `
-        anime({
-          targets: '.grid .grid-element', // Iegūst visus elementus zem .grid
-          scale: [
-            {value: .1, easing: 'easeOutSine', duration: 500}, // Maina to izmērus
-            {value: 1, easing: 'easeInOutQuad', duration: 1200}
-          ],
-          delay: anime.stagger(200, {grid: [13, 6], from: 'center'}),
-          loop: true // Un atkārto animācijui
-        });
+      task1Html: `
+      <div class="grid-element task-1" />
+      <div class="grid-element task-2" />
+      <div class="grid-element task-3" />
+      <input class="slider" step="0.01" type="range" min="0" max="100" value="0" />
       `,
-      fakeTable: [],
-      loadedFakeTable: [
-        { name: 'Jānis', points: 413 },
-        { name: 'Olafs', points: 341 },
-        { name: 'Miks', points: 279 },
-        { name: 'Alberts', points: 190 },
-        { name: 'Markuss', points: 89 },
-        { name: 'Igors', points: 17 },
-      ],
-      isLoadingTableData: false,
+      task2Code: `
+      var animation = anime({
+      targets: '.task-1',
+      translateX: 270,
+      delay: function(el, i) { return i * 100; },
+      elasticity: 200,
+      easing: 'easeInOutSine',
+      autoplay: false
+    });
 
-      gridArr: new Array(78)
+    var progressBar = document.querySelector('.slider');
+    progressBar.oninput = function() {
+      animation.seek(animation.duration * (progressBar.value / 100));
+    };
+      `,
+
+      animation1: undefined,
+      animation2: undefined,
+      animation3: undefined,
+
+
+      radioChoice: undefined,
+      doneTask: false,
+      testFail: false,
     }
   },
   mounted(){
-    setTimeout(() => {
+    setTimeout(()=>{
       anime({
-        targets: '.grid .grid-element',
-        scale: [
-          {value: .1, easing: 'easeOutSine', duration: 500},
-          {value: 1, easing: 'easeInOutQuad', duration: 1200}
-        ],
-        delay: anime.stagger(200, {grid: [13, 6], from: 'center'}),
-        loop: true
+        targets: '.task-1',
+        translateX: 270,
+        direction: 'alternate',
+        loop: true,
+        easing: 'easeInOutSine'
       });
-    }, 1000);
+      anime({
+        targets: '.task-2',
+        translateX: 180,
+        direction: 'alternate',
+        loop: true,
+        easing: 'easeInOutSine'
+      });
+      anime({
+        targets: '.task-3',
+        translateX: 90,
+        direction: 'alternate',
+        loop: true,
+        easing: 'easeInOutSine'
+      });
+      
+      this.animation1 = anime({
+        targets: '.task-4',
+        translateX: 270,
+        delay: function(el, i) { return i * 100; },
+        elasticity: 200,
+        easing: 'easeInOutSine',
+        autoplay: false
+      });
+
+      this.animation2 = anime({
+        targets: '.task-5',
+        translateX: 250,
+        delay: function(el, i) { return i * 100; },
+        elasticity: 200,
+        easing: 'easeInOutSine',
+        autoplay: false
+      });
+
+      this.animation3 = anime({
+        targets: '.task-6',
+        translateX: 230,
+        delay: function(el, i) { return i * 100; },
+        elasticity: 200,
+        easing: 'easeInOutSine',
+        autoplay: false
+      });
+
+    }, 300)
   },  
   methods: {
     changeBtnColor(){
       this.isBtnClicked = !this.isBtnClicked
     },
-    loadFakeApi(){
-      this.fakeTable = []
-      this.isLoadingTableData = true
-      setTimeout(()=>{
-        this.isLoadingTableData = false
-        this.fakeTable = this.loadedFakeTable
-      }, 1000)
-    }
+    changeAnim(v){
+      if(!this.animation1) return
+      this.animation1.seek(this.animation1.duration * (v / 100));
+      this.animation2.seek(this.animation2.duration * (v / 100 * 0.7));
+      this.animation3.seek(this.animation3.duration * (v / 100 * 0.5));
+    },
+    checkCode(){
+          if(this.radioChoice === 2){
+            this.doneTask = true
+          }
+          else {
+            this.testFail = true
+          }
+        },
+        nextCat(){
+          this.$router.push({ name: "tech"})
+        }
   }
 }
 </script>
@@ -173,5 +225,6 @@ export default {
   width: 20px;
   height: 20px;
   background-color: green;
+  transform: translateX(0);
 }
 </style>

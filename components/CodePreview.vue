@@ -12,7 +12,7 @@
     <v-tab key="html-code" v-if="this.$props.htmlCode">
       HTML kods
     </v-tab>
-    <v-tab key="code">
+    <v-tab key="code" v-if="this.$props.code">
       Javascript
     </v-tab>
   </v-tabs>
@@ -25,7 +25,7 @@
         </v-card>
       </v-tab-item>
       <v-tab-item
-        key="html-cde"
+        key="html-code"
         v-if="this.$props.htmlCode"
       >
         <v-card flat class="hljs code-block">
@@ -38,6 +38,7 @@
       </v-tab-item>
       <v-tab-item
         key="code"
+        v-if="this.$props.code"
       >
         <v-card flat class="hljs code-block">
           <pre>

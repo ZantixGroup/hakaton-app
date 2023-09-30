@@ -70,7 +70,7 @@
       <v-card-actions>
         Visi šie uzdevumi tiks praktiski parādīti tālākās lapās - 
         <v-spacer/>
-      <v-btn color="primary" text>
+      <v-btn color="primary" text @click="nextCat">
         Tālāk
         <v-icon>mdi-arrow-right</v-icon>
       </v-btn>
@@ -154,7 +154,10 @@ export default {
         this.isLoadingTableData = false
         this.fakeTable = this.loadedFakeTable
       }, 1000)
-    }
+    },
+    nextCat(){
+          this.$router.push({ name: "tech-3"})
+        }
   }
 }
 </script>
