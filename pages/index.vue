@@ -9,30 +9,26 @@
           <TechSelect @click="changeToCategory('tech')"/>
         </div>
       </v-card>
-      
+
     </v-col>
   </v-row>
 </template>
 
 <script>
 import TestAnimation from '~/components/TestAnimation.vue';
-import MathSelect from '~/components/subjectSelect/math.vue';
-import MechSelect from '~/components/subjectSelect/mech.vue';
-import ScienceSelect from '~/components/subjectSelect/science.vue';
-import TechSelect from '~/components/subjectSelect/tech.vue';
+import ScienceSelect from '~/components/subjectSelect/science.vue'
+import MathSelect from '~/components/subjectSelect/math.vue'
+import MechSelect from '~/components/subjectSelect/mech.vue'
+import TechSelect from '~/components/subjectSelect/tech.vue'
+import {UserData} from "~/storage/user";
 export default {
-  transition: {
-    name: 'test',
-    mode: 'out-in'
-  },
-    name: 'IndexPage',
-    auth: false,
-    components: { TestAnimation, ScienceSelect, MathSelect, MechSelect, TechSelect },
-    methods: {
-      changeToCategory(e){
-        this.$router.push({ name: e})
-      }
+  name: 'IndexPage',
+  components: { TestAnimation, ScienceSelect, MathSelect, MechSelect, TechSelect },
+  methods: {
+    changeToCategory(e){
+      this.$router.push({ name: e})
     }
+  }
 }
 </script>
 <style scoped lang="scss">
@@ -52,6 +48,7 @@ export default {
 .margin-5 > * {
     margin: 5px;
 }
+
 .col {
   padding: 0px !important;
   padding-inline: 5px !important;
