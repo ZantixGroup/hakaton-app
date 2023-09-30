@@ -50,7 +50,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    
+
     '@nuxtjs/auth-next',
   ],
 
@@ -99,8 +99,8 @@ export default {
 
   auth: {
     redirect: {
-      login: '/login',
-      callback: '/auth/azureCallback',
+      login: false,
+      callback: false,
       home: false,
     },
     strategies: {

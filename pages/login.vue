@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <div class="login-container">
-      <v-form class="login" @submit.prevent="login()">
+      <v-form class="login" ref="form" @submit.prevent="login()">
         <h1>Pieslēgšanās</h1>
         <div class="input-container">
           <p>E-pasts</p>
@@ -21,7 +21,7 @@
         </v-btn>
         <div class="additional-buttons">
           <v-btn text>Aizmirsi paroli?</v-btn>
-          <v-btn text>Izveidot kontu</v-btn>
+          <v-btn @click="$router.push('/register')" text>Izveidot kontu</v-btn>
         </div>
       </v-form>
       <p style="color: white; margin-top: auto;">&copy; {{ new Date().getFullYear() }} SIA Zantix - Visas tiesības aizsargātas</p>
@@ -33,6 +33,7 @@
 import {UserData} from "~/storage/user";
 
 export default {
+  auth: false,
   layout: 'login-layout',
   data() {
     return {
@@ -53,7 +54,6 @@ export default {
   },
   created() {
     this.$nextTick(() => {
-      console.log(UserData.IsLoggedIn)
       if(UserData.IsLoggedIn) {
         this.$router.push('/')
       }
@@ -61,6 +61,7 @@ export default {
   },
   methods: {
     login() {
+      if (!this.$refs.form.validate() ) { return }
       UserData.login(this.form.email, this.form.password).then(isSuccess => {
         this.isCorrect = isSuccess
       })

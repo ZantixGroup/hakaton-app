@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar
       fixed
-      app                                                                                                                                                                                                                                                                                                                                
+      app
       elevation="0"
       class="white-bg"
     >
@@ -53,6 +53,7 @@
 <script>
 import ScoreDisplay from '~/components/ScoreDisplay.vue'
 import { DataStorage } from '~/storage/init'
+import {UserData} from "~/storage/user";
 export default {
   name: 'DefaultLayout',
   data () {
@@ -87,6 +88,11 @@ export default {
   components: { ScoreDisplay },
   created(){
     DataStorage.initialize(this)
+    this.$nextTick(()=>{
+      if(!UserData.IsLoggedIn){
+        this.$router.push({ name: 'login'})
+      }
+    })
   },
   methods: {
     navigateTo(page){
@@ -110,7 +116,7 @@ export default {
   border-radius: $border-radius !important;
   background: $color-light-green !important;
   margin-top: -10px !important;
-  height: 70px !important;  
+  height: 70px !important;
   transition: 0.2s !important
 }
 

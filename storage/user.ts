@@ -68,7 +68,7 @@ export class UserData {
         this.setUser(a.name, a.surname, a.id, a.score, a.s_level, a.t_level, a.e_level, a.m_level, a.avatar)
         this._context.$router.push('/');
         resolve(true)
-      }).catch((e)=>{
+      }).catch((e: any)=>{
         resolve(false)
       })
     })
@@ -100,6 +100,7 @@ export class UserData {
       localStorage.setItem('user', JSON.stringify(obj))
     } else {
       GeneralStore.setValue(['user'], undefined)
+      this._context.$auth.setUser(null)
       localStorage.setItem('user', JSON.stringify(undefined))
     }
   }

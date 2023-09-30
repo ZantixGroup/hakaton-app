@@ -9,7 +9,7 @@
           <TechSelect @click="changeToCategory('tech')"/>
         </div>
       </v-card>
-      
+
     </v-col>
   </v-row>
 </template>
@@ -20,15 +20,15 @@ import ScienceSelect from '~/components/subjectSelect/science.vue'
 import MathSelect from '~/components/subjectSelect/math.vue'
 import MechSelect from '~/components/subjectSelect/mech.vue'
 import TechSelect from '~/components/subjectSelect/tech.vue'
+import {UserData} from "~/storage/user";
 export default {
-    name: 'IndexPage',
-    auth: false,
-    components: { TestAnimation, ScienceSelect, MathSelect, MechSelect, TechSelect },
-    methods: {
-      changeToCategory(e){
-        this.$router.push({ name: e})
-      }
+  name: 'IndexPage',
+  components: { TestAnimation, ScienceSelect, MathSelect, MechSelect, TechSelect },
+  methods: {
+    changeToCategory(e){
+      this.$router.push({ name: e})
     }
+  }
 }
 </script>
 <style scoped>
