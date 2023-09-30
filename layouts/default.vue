@@ -1,29 +1,5 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
     <v-app-bar
       :clipped-left="clipped"
       fixed
@@ -80,11 +56,24 @@
       </v-list>
     </v-navigation-drawer>
     <v-footer
-      :absolute="!fixed"
+      v-if="!$vuetify.breakpoint.mobile"
       app
+      height="60px"
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <v-spacer>
+      <v-row justify="center" no-gutters>
+        <v-col class="text-center">
+          &copy; {{ new Date().getFullYear() }} SIA Zantix visas tiesības aizsargātas
+        </v-col>
+      </v-row>
+      </v-spacer>
     </v-footer>
+    <v-bottom-navigation v-else v-model="activeCategory" horizontal>
+      <v-btn v-for="(item,i) in items" :key="i" :value="item.to" @click="navigateTo(item.to)" :class="activeCategory===item.to?'light-green accent-1 selected-btn':''">
+        <span v-if="!$vuetify.breakpoint.smAndDown">{{ item.title }}</span>
+        <v-icon color="green" x-large class="mr-0">{{ item.icon }}</v-icon>
+      </v-btn>
+    </v-bottom-navigation>
   </v-app>
 </template>
 
@@ -99,20 +88,38 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
+          title: 'Tops',
+          to: 'top'
+        },
+        {
+          icon: 'mdi-eye',
+          title: 'Mācības',
+          to: 'index'
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
+          title: 'Profils',
+          to: 'profile'
+        },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Vuetify.js',
+      activeCategory: undefined
+    }
+  },
+  methods: {
+    navigateTo(page){
+      console.log(this.activeCategory)
+      this.$router.push({ name: page})
     }
   }
 }
 </script>
+<style>
+.selected-btn {
+  border-radius: 5px !important;
+  margin-top: -20px !important;
+}
+</style>
