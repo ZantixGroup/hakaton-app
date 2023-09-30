@@ -27,10 +27,10 @@
           <v-list class="transparent no-outline">
             <v-list-item
                 v-for="(item, index) in items"
-                :key="item.title"
+                :key="index"
             >
                 <v-col>
-                    <v-row>
+                    <v-row @click="emitClick(item.target)">
                         <v-list-item-content>
                             <v-list-item-title>{{ item.title }}</v-list-item-title>
                             <v-list-item-subtitle>{{ item.subtitle }}</v-list-item-subtitle>
@@ -66,6 +66,11 @@ export default {
       description: "among us"
     }
   },
+  methods: {
+    emitClick(e){
+      this.$router.push({ name: e})
+    }
+  }
 }
 </script>
 

@@ -17,7 +17,7 @@ export default {
             title: "Tech",
             subtitle: "tech",
             items: [
-            {title: "Tech", subtitle: "tech"}, 
+            {title: "Tech", subtitle: "tech", target: 'tech-1'}, 
             {title: "Tech", subtitle:"tech"}]
         };
     },

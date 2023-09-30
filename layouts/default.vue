@@ -68,18 +68,18 @@ export default {
       fixed: false,
       items: [
         {
-          iconPath: 'svg/pedastel.svg',
+          iconPath: '/svg/pedastel.svg',
           title: 'Tops',
           to: 'top',
           toPrec: true
         },
         {
-          iconPath: 'svg/book.svg',
+          iconPath: '/svg/book.svg',
           title: 'Mācības',
           to: 'index'
         },
         {
-          iconPath: 'svg/user.svg',
+          iconPath: '/svg/user.svg',
           title: 'Profils',
           to: 'profile',
           toPrec: true
@@ -97,6 +97,7 @@ export default {
         "tech": "Tehnoloģijas",
         "mech": "Inženierija",
         "science": "Zinātne",
+        "tech-1": "Ievads Javascript"
       }
     }
   },
