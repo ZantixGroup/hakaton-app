@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" align="center" style="height: 100%;"  class="bg-gray">
+  <v-row justify="center" align="center" style="height: 100%;" class="bg">
     <v-col cols="12">
       <v-card flat>
         <div :class="($vuetify.breakpoint.mobile? $vuetify.breakpoint.xs?'mobile-grid':'mobile-grid':'d-flex justify-center margin-5')">
@@ -31,9 +31,11 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
 .mobile-grid {
   display: grid;
+  width: 100% !important;
+  overflow: hidden;
   grid-row: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 5px;
@@ -45,5 +47,14 @@ export default {
 }
 .margin-5 > * {
     margin: 5px;
+}
+
+.col {
+  padding: 0px !important;
+  padding-inline: 5px !important;
+}
+
+.v-card {
+  background: transparent;
 }
 </style>

@@ -8,21 +8,22 @@
     >
       <div class="green--text--better"
       >
-        <v-icon class="icon" @click="navigateTo('index')">mdi-home</v-icon>
-        <b>Sākumlapa</b>
+        <v-icon class="icon" @click="lastPage()">{{ activeCategory==='index'?'mdi-home':'mdi-arrow-left' }}</v-icon>
+        <b>{{ routeNames[activeCategory] }}</b>
     </div>
      <v-spacer v-if="!$vuetify.breakpoint.mobile"/>
      <div v-if="!$vuetify.breakpoint.mobile">
-      <v-btn v-for="(item,i) in items" :key="i" text flat :value="item.to" @click="navigateTo(item.to)" :class="activeCategory===item.to?'light-green accent-1 selected-btn':''">
+      <v-btn v-for="(item,i) in items" :key="i" text  :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="item.to === 'index' ? (activeCategory !== 'top' && activeCategory !== 'profile' ? 'selected-btn-top': ''):(item.to === activeCategory? 'selected-btn-top':'')">
         <span v-if="!$vuetify.breakpoint.smAndDown">{{ item.title }}</span>
-        <v-icon x-large class="mr-0 icon">{{ item.icon }}</v-icon>
+        <img :src="item.iconPath" height="35px" width="40px"/>
       </v-btn>
+
      </div>
      <v-spacer/>
      <ScoreDisplay/>
     </v-app-bar>
     <v-main>
-      <v-container style="height: 100%;">
+      <v-container fluid style="height: 100%;">
         <template>
           <Nuxt/>
         </template>
@@ -41,8 +42,8 @@
       </v-row>
       </v-spacer>
     </v-footer>
-    <v-bottom-navigation v-else v-model="activeCategory" horizontal fixed>
-      <v-btn v-for="(item,i) in items" :key="i" :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="activeCategory===item.to?'selected-btn':''">
+    <v-bottom-navigation v-else horizontal fixed>
+      <v-btn v-for="(item,i) in items" :key="i" :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="item.to === 'index' ? (activeCategory !== 'top' && activeCategory !== 'profile' ? 'selected-btn': ''):(item.to === activeCategory? 'selected-btn':'')">
         <span v-if="!$vuetify.breakpoint.smAndDown">{{ item.title }}</span>
         <img :src="item.iconPath" height="35px" width="40px"/>
       </v-btn>
@@ -56,6 +57,10 @@ import { DataStorage } from '~/storage/init'
 import {UserData} from "~/storage/user";
 export default {
   name: 'DefaultLayout',
+  transition: {
+    name: 'test',
+    mode: 'out-in'
+  },
   data () {
     return {
       clipped: false,
@@ -65,7 +70,8 @@ export default {
         {
           iconPath: 'svg/pedastel.svg',
           title: 'Tops',
-          to: 'top'
+          to: 'top',
+          toPrec: true
         },
         {
           iconPath: 'svg/book.svg',
@@ -75,17 +81,31 @@ export default {
         {
           iconPath: 'svg/user.svg',
           title: 'Profils',
-          to: 'profile'
+          to: 'profile',
+          toPrec: true
         },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js',
-      activeCategory: undefined
+      routeNames: {
+        "index": "Sākumlapa",
+        "top": "Tops",
+        "profile": "Profils",
+        "math": "Matemātika",
+        "tech": "Tehnoloģijas",
+        "mech": "Inženierija",
+        "science": "Zinātne",
+      }
     }
   },
   components: { ScoreDisplay },
+  computed: {
+    activeCategory(){
+      return this.$route.name
+    }
+  },
   created(){
     DataStorage.initialize(this)
     this.$nextTick(()=>{
@@ -96,9 +116,16 @@ export default {
   },
   methods: {
     navigateTo(page){
-      console.log(this.activeCategory)
       this.$router.push({ name: page})
-    }
+    },
+    lastPage(){
+      let a = this.activeCategory.split('-')
+      a.pop()
+      if(a.length === 0){
+        a = ['index']
+      }
+      this.navigateTo(a.join('-'))
+    },
   }
 }
 </script>
@@ -109,8 +136,8 @@ export default {
 .v-btn:hover::before {
   display: none !important;
 }
-.bg-gray {
-  background-color: $color-bg-grey;
+.bg {
+  background-color: transparent !important;
 }
 .selected-btn {
   border-radius: $border-radius !important;
@@ -119,9 +146,22 @@ export default {
   height: 70px !important;
   transition: 0.2s !important
 }
+.selected-btn-top {
+  border-radius: $border-radius !important;
+  background: $color-light-green !important;
+  margin-bottom: -20px !important;
+  height: 70px !important;  
+  transition: 0.2s !important
+}
 
 .icon {
   color: $color-icons !important;
+}
+
+.container {
+  background: $color-bg-grey;
+  width: 100% !important;
+  overflow-x: hidden !important;
 }
 
 .green--text--better * {
@@ -131,4 +171,11 @@ export default {
   background-color: white !important;
 }
 
+.v-main {
+  max-height: calc(100vh - 56px) !important;
+}
+
+html, body {
+  overflow: hidden;
+}
 </style>
