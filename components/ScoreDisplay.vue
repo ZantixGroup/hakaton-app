@@ -1,5 +1,5 @@
 <template>
-  <v-btn rounded outlined elevation="0" plain class="green-border" @click="logins">
+  <v-btn rounded outlined elevation="0" plain class="green-border">
     <img src="svg/star.svg" height="20px" width="20px" />
     {{ score }}
   </v-btn>
@@ -11,11 +11,6 @@ export default {
   computed: {
     score(){
       return UserData.Score
-    }
-  },
-  methods: {
-    logins(){
-      UserData.login('asd@asd.com', 'admin123')
     }
   }
 }

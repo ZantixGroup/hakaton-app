@@ -178,7 +178,7 @@ export default {
   background: $color-bg-grey;
   width: 100% !important;
   overflow-x: hidden !important;
-  
+
   &::-webkit-scrollbar {
     width: 4px;
   }
@@ -187,7 +187,7 @@ export default {
     background-color: darkgrey;
     outline: 1px solid slategrey;
   }
-  
+
   &.md {
     max-width: 100% !important;
     padding-inline: calc((100vw - 1100px)/2) !important;
