@@ -1,4 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap');
+@font-face {
+  src: local('M PLUS Rounded 1c'),
+    url('./assets/mplus/MPLUSRounded1c-Black.ttf') format('truetype');
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  src: local('M PLUS Rounded 1c'),
+    url('./assets/mplus/MPLUSRounded1c-ExtraBold.ttf') format('truetype');
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  src: local('M PLUS Rounded 1c'),
+    url('./assets/mplus/MPLUSRounded1c-Bold.ttf') format('truetype');
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  src: local('M PLUS Rounded 1c'),
+    url('./assets/mplus/MPLUSRounded1c-Medium.ttf') format('truetype');
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  src: local('M PLUS Rounded 1c'),
+    url('./assets/mplus/MPLUSRounded1c-Regular.ttf') format('truetype');
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  src: local('M PLUS Rounded 1c'),
+    url('./assets/mplus/MPLUSRounded1c-Light.ttf') format('truetype');
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  src: local('M PLUS Rounded 1c'),
+    url('./assets/mplus/MPLUSRounded1c-Thin.ttf') format('truetype');
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: 100;
+  font-style: normal;
+}
 
 $body-font-family: 'M PLUS Rounded 1c';
 $title-font: 'M PLUS Rounded 1c';

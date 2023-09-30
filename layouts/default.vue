@@ -6,24 +6,32 @@
       elevation="0"
       class="white-bg"
     >
-      <div class="green--text--better"
-      >
-        <v-icon class="icon" @click="lastPage()">{{ activeCategory==='index'?'mdi-home':'mdi-arrow-left' }}</v-icon>
-        <b>{{ routeNames[activeCategory] }}</b>
-    </div>
-     <v-spacer v-if="!$vuetify.breakpoint.mobile"/>
-     <div v-if="!$vuetify.breakpoint.mobile">
-      <v-btn v-for="(item,i) in items" :key="i" text  :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="item.to === 'index' ? (activeCategory !== 'top' && activeCategory !== 'profile' ? 'selected-btn-top': ''):(item.to === activeCategory? 'selected-btn-top':'')">
-        <span v-if="!$vuetify.breakpoint.smAndDown">{{ item.title }}</span>
-        <img :src="item.iconPath" height="35px" width="40px"/>
-      </v-btn>
-
-     </div>
-     <v-spacer/>
-     <ScoreDisplay/>
+      <div class="nav-container">
+        <div class="green-text-better" @click="lastPage()">
+          <v-icon class="icon">{{ activeCategory==='index'?'mdi-home':'mdi-arrow-left' }}</v-icon>
+          <b>{{ routeNames[activeCategory] }}</b>
+        </div>
+      </div>
+      <v-spacer v-if="!$vuetify.breakpoint.mobile"/>
+      <div class="header-nav" v-if="!$vuetify.breakpoint.mobile">
+        <v-btn v-for="(item,i) in items" :key="i" text  :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="item.to === 'index' ? (activeCategory !== 'top' && activeCategory !== 'profile' ? 'selected-btn-top': ''):(item.to === activeCategory? 'selected-btn-top':'')">
+          <span class="nav-btn-title" v-if="!$vuetify.breakpoint.smAndDown">{{ item.title }}</span>
+          <img :src="item.iconPath" height="35px" width="40px"/>
+        </v-btn>
+      </div>
+      <v-spacer/>
+      <div class="nav-container right">
+        <ScoreDisplay/>
+      </div>
     </v-app-bar>
-    <v-main>
-      <v-container fluid style="height: 100%;">
+    <v-main :class="{
+      'main': true,
+      'md': $vuetify.breakpoint.mdAndUp,
+    }">
+      <v-container style="height: 100%;" :class="{
+        'container': true,
+        'md': $vuetify.breakpoint.mdAndUp,
+      }">
         <template>
           <Nuxt/>
         </template>
@@ -31,7 +39,6 @@
     </v-main>
     <v-footer
       v-if="!$vuetify.breakpoint.mobile"
-      app
       height="60px"
     >
       <v-spacer>
@@ -138,13 +145,22 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .v-btn {
   transition: 0.2s !important;
+  &:hover::before {
+    display: none !important;
+  }
 }
-.v-btn:hover::before {
-  display: none !important;
+
+.nav-btn-title {
+  margin-right: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  color: $color-text-green;
+  text-transform: capitalize !important;
 }
+
 .bg {
   background-color: transparent !important;
 }
@@ -158,8 +174,8 @@ export default {
 .selected-btn-top {
   border-radius: $border-radius !important;
   background: $color-light-green !important;
-  margin-bottom: -20px !important;
-  height: 70px !important;  
+  margin-bottom: -10px !important;
+  height: 70px !important;
   transition: 0.2s !important
 }
 
@@ -171,20 +187,62 @@ export default {
   background: $color-bg-grey;
   width: 100% !important;
   overflow-x: hidden !important;
+  
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
+  
+  &.md {
+    max-width: 100% !important;
+    padding-inline: calc((100vw - 1100px)/2) !important;
+  }
 }
 
-.green--text--better * {
+.nav-container {
+  display: flex;
+  flex: 1 1 200px;
+  &.right {
+    justify-content: flex-end;
+  }
+}
+.green-text-better {
+  height: 100%;
+  cursor: pointer;
+  user-select: none;
   color: $color-primary;
+  * {
+    color: $color-primary !important;
+  }
 }
 .white-bg {
   background-color: white !important;
 }
 
-.v-main {
+.main {
   max-height: calc(100vh - 56px) !important;
+  background: $color-bg-grey !important;
+  &.md { overflow: visible !important; }
 }
 
-html, body {
-  overflow: hidden;
+.header-nav {
+  height: 100% !important;
+  display: flex;
+  align-items: flex-start;
+  & > * {
+    min-height: 100% !important;
+  }
+}
+
+:global(.v-toolbar__content) {
+  padding-block: 0px !important;
+}
+
+:global(html, body) {
+  overflow: hidden !important;
 }
 </style>
