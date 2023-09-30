@@ -1,5 +1,5 @@
 <template>
-  <v-app style="overflow: hidden; height: 100vh">
+  <v-app class="app">
     <div class="login-main">
       <v-main>
         <Nuxt />
@@ -23,6 +23,11 @@ export default {
 </script>
 
 <style scoped>
+.app {
+  overflow: hidden;
+  height: 100vh
+}
+
 .login-main {
   display: flex;
   justify-content: center;
@@ -48,6 +53,10 @@ export default {
 }
 
 @media only screen and (max-width: 975px) {
+  .app {
+    overflow: initial;
+  }
+
   .login-decoration,
   .login-decoration > div {
     width: 0;

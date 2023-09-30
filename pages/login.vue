@@ -85,9 +85,9 @@ export default {
 .login {
   margin-top: auto;
   border-radius: 15px;
-  padding: 32px;
+  padding: 24px;
   background-color: white;
-  min-width: 400px;
+  width: 450px;
 }
 
 .login > h1 {
@@ -133,5 +133,17 @@ export default {
 }
 .additional-buttons > button:hover {
   color: initial;
+}
+
+@media only screen and (max-width: 480px) {
+  .login {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .login {
+    width: 350px;
+  }
 }
 </style>
