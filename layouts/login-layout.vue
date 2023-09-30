@@ -1,9 +1,5 @@
 <template>
   <v-app style="overflow: hidden; height: 100vh">
-<!--    <v-app-bar fixed app>-->
-<!--      <v-icon style="color:green; font-size: 32px">mdi-account-plus-outline</v-icon>-->
-<!--      <v-toolbar-title style="color: green; margin-left: 10px">Pieslēgšanās</v-toolbar-title>-->
-<!--    </v-app-bar>-->
     <div class="login-main">
       <v-main>
         <Nuxt />
