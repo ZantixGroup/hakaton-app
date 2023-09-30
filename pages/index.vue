@@ -1,14 +1,8 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12">
-      <v-card flat>
-        <div :class="($vuetify.breakpoint.mobile?'mobile-grid':'d-flex  justify-space-between')">
-          <ScienceSelect @click="changeToCategory('science')"/>
-          <MathSelect @click="changeToCategory('math')"/>
-          <MechSelect @click="changeToCategory('mech')"/>
-          <TechSelect @click="changeToCategory('tech')"/>
-        </div>
-      </v-card>
+      <LessonButt>
+      </LessonButt>
       
     </v-col>
   </v-row>
@@ -20,9 +14,10 @@ import ScienceSelect from '~/components/subjectSelect/science.vue'
 import MathSelect from '~/components/subjectSelect/math.vue'
 import MechSelect from '~/components/subjectSelect/mech.vue'
 import TechSelect from '~/components/subjectSelect/tech.vue'
+import LessonButt from '~/components/LessonButt.vue';
 export default {
     name: 'IndexPage',
-    components: { TestAnimation, ScienceSelect, MathSelect, MechSelect, TechSelect },
+    components: { TestAnimation, ScienceSelect, MathSelect, MechSelect, TechSelect, LessonButt },
     methods: {
       changeToCategory(e){
         this.$router.push({ name: e})
