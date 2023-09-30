@@ -22,7 +22,7 @@
      <ScoreDisplay/>
     </v-app-bar>
     <v-main>
-      <v-container style="height: 100%;">
+      <v-container fluid style="height: 100%;">
         <template>
           <Nuxt/>
         </template>
@@ -103,8 +103,8 @@ export default {
 .v-btn:hover::before {
   display: none !important;
 }
-.bg-gray {
-  background-color: $color-bg-grey;
+.bg {
+  background-color: transparent !important;
 }
 .selected-btn {
   border-radius: $border-radius !important;
@@ -118,11 +118,22 @@ export default {
   color: $color-icons !important;
 }
 
+.container {
+  background: $color-bg-grey;
+  width: 100% !important;
+  overflow-x: hidden !important;
+}
+
 .green--text--better * {
   color: $color-primary;
 }
 .white-bg {
   background-color: white !important;
+}
+
+.v-main {
+  max-height: calc(100vh - 56px) !important;
+  overflow: scroll !important;
 }
 
 </style>
