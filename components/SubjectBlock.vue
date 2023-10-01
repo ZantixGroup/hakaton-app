@@ -52,22 +52,30 @@ export default {
 <style scoped lang="scss">
 .v-card {
   overflow: hidden;
+  transition: .3s all;
 }
 
+.v-card:hover {
+  transform: scale(1.02);
+}
 .card-container {
   height: calc((100vh - 112px - 5px) / 2);
+  z-index: 3;
   &.md { height: auto }
   &.sm { height: calc((100vh - 112px - 5px) / 2); }
 }
 
-.tite {
-  font-size: 2.5rem;
-  &.md { font-size: 1.75rem; }
-  &.sm { font-size: 1.35rem; }
-  &.xs { font-size: 1rem; }
+.title {
+  font-size: 2rem !important;
+  font-weight: 900 !important;
+  z-index: 111113;
+  &.md { font-size: 2.25rem !important; }
+  &.sm { font-size: 1.85rem !important; }
+  &.xs { font-size: 1.5rem !important; }
 }
 
-.desc { 
+.desc {
+  z-index: 111113;
   font-size: 1.2rem;
   text-wrap: balance;
   &.md { font-size: 1.1rem; }
@@ -75,8 +83,9 @@ export default {
   &.xs { font-size: 0.8rem; }
 }
 
-.score { 
+.score {
   font-size: 3rem;
+  z-index: 111113;
   &.md { font-size: 8rem; }
   &.sm { font-size: 3rem; }
   &.xs { font-size: 1.75rem; }
@@ -100,6 +109,7 @@ export default {
   bottom: 0;
   right: 0;
   width: 145%;
-  opacity: 0.1;
+  opacity: 0.07;
+  z-index: 2;
 }
 </style>

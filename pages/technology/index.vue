@@ -1,9 +1,9 @@
 <template>
     <v-row justify="center" align="center" style="height: 100%;" class="bg">
       <v-col cols="12">
-        <StudyButtons :title1="title" :subtitle1="subtitle" :items="items"></StudyButtons>
-        <StudyButtons :title1="title2" :subtitle1="subtitle2" :items="items2"></StudyButtons>
-        <StudyButtons :title1="title3" :subtitle1="subtitle3" :items="items3"></StudyButtons>
+        <StudyButtons color="orange" :title1="title" :subtitle1="subtitle" :items="items"></StudyButtons>
+        <StudyButtons color="orange" :title1="title2" :subtitle1="subtitle2" :items="items2"></StudyButtons>
+        <StudyButtons color="orange" :title1="title3" :subtitle1="subtitle3" :items="items3"></StudyButtons>
       </v-col>
     </v-row>
   </template>
@@ -18,10 +18,10 @@ export default {
             title: "Javascript",
             subtitle: "Ievads un praktiskās mācības Javascript valodā",
             items: [
-            {title: "Ievads", subtitle: "Ievads Javascript valodā, kur tiek parādītas Javascript valodas spējas", target: 'tech-1'}, 
-            {title: "Javascript selektori", subtitle: "Kā izvēlēties html elementus no javascript, prieks manipulācijas", target: 'tech-2'}, 
-            {title: "Animācijas ar javascript", subtitle: "Vienkāršas animācijas un objektu kustība", target: 'tech-3'}, 
-            {title: "Dati no citām sistēmām", subtitle: "Dati iegūšana un nosūtne no ārējām sistēmām", target: 'tech-4', locked: true}, 
+            {title: "Ievads", subtitle: "Ievads Javascript valodā, kur tiek parādītas Javascript valodas spējas", target: 'technology-1'}, 
+            {title: "Javascript selektori", subtitle: "Kā izvēlēties html elementus no javascript, prieks manipulācijas", target: 'technology-2'}, 
+            {title: "Animācijas ar javascript", subtitle: "Vienkāršas animācijas un objektu kustība", target: 'technology-3'}, 
+            {title: "Dati no citām sistēmām", subtitle: "Dati iegūšana un nosūtne no ārējām sistēmām", target: 'technology-4', locked: true}, 
 
             {title: "Darbs ar Vue.JS", subtitle: "Vue.JS kopne, darbs ar to", locked: true }, 
             {title: "Javascript serveru vidē", subtitle: "Kā izmantot Javascript, lai sazinātos ar datubāzēm un citām sistēmām", locked: true }, 

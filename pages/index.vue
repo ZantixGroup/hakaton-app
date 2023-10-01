@@ -1,95 +1,140 @@
 <template>
-  <v-row justify="center" align="center" class="bg">
-    <v-col cols="12">
-      <v-card flat>
-        <div :class="($vuetify.breakpoint.mobile? $vuetify.breakpoint.xs?'mobile-flex':'mobile-flex':'desktop-grid')">
-          <SubjectBlock 
-            @click="changeToCategory('science')" 
-            title="Zinātne" 
-            description="Sistemātiska un kārtota patiesības meklēšana" 
-            color="red"
-            score="25"
-            maxScore="100"
-            svgPath="/svg/Science.svg"/>
-          <SubjectBlock 
-            @click="changeToCategory('mathematics')" 
-            title="Matemātika" 
-            description="Abstrakts skaitļu un lielumu pētījums" 
-            color="green" 
-            score="25" 
-            maxScore="100"
-            svgPath="/svg/Math.svg"/>
-          <SubjectBlock 
-            @click="changeToCategory('engineering')" 
-            title="Indžinierija" 
-            description="Izstrādā risinājumus reāliem izaicinājumiem" 
-            color="blue" 
-            score="25" 
-            maxScore="100"
-            svgPath="/svg/Engineering.svg"/>
-          <SubjectBlock
-            @click="changeToCategory('technology')" 
-            title="Tehnoloģija" 
-            description="Inovatīvi rīki kas veido mūsu nākotni" 
-            color="orange" 
-            score="25" 
-            maxScore="100"
-            svgPath="/svg/Technology.svg"/>
+  <v-app style="display: flex">
+    <div class="container">
+      <div class="head">
+        <h1>Māksla zināt!</h1>
+        <div class="head_text">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
         </div>
-      </v-card>
-
-    </v-col>
-  </v-row>
+        <v-btn class="additional-button" @click="$router.push('/login')">
+          Sākt
+        </v-btn>
+      </div>
+      <p style="color: white; margin-top: auto;">&copy; {{ new Date().getFullYear() }} SIA Zantix - Visas tiesības aizsargātas</p>
+    </div>
+  </v-app>
 </template>
 
 <script>
-import SubjectBlock from '~/components/SubjectBlock.vue';
-import TestAnimation from '~/components/TestAnimation.vue';
+import {UserData} from "~/storage/user";
 
 export default {
-  name: 'IndexPage',
   auth: false,
-  components: { TestAnimation, SubjectBlock },
-  methods: {
-    changeToCategory(e){
-      this.$router.push({ name: e})
+  layout: 'main-layout',
+  data() {
+    return {
+
+    }
+  },
+  created(){
+    if (UserData.IsLoggedIn) {
+      this.$router.push('/starter')
     }
   }
 }
 </script>
-<style scoped lang="scss">
-.mobile-flex {
+
+<style scoped>
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #80DB56;
   display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
 
-  & > :global(.v-card){
-    flex: 1 0 calc(50% - 5px / 2);
-    margin: 0px !important;
+.head {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  justify-content: left;
+  border-radius: 15px;
+  padding: 32px;
+  min-width: 400px;
+  width: 60%;
+}
+
+.head > h1 {
+  text-align: left;
+  font-weight: 700 !important;
+  font-size: 120px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.head_text{
+  text-align: left;
+  font-weight: normal;
+  width: 100%;
+  color: white;
+}
+
+.additional-button {
+  align-self: left;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  color: #80DB56;
+  font-weight: 900 !important;
+  width: 200px;
+  height: 50px !important;
+  box-shadow: none;
+  margin-top: 20px;
+  transition: .6;
+}
+
+.additional-button:hover {
+  background-color: #e5e5e5;
+  scale: 1.1;
+}
+
+@media only screen and (max-width: 975px) {
+  .head {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: auto;
+    padding: 0px;
+    border-radius: 15px;
+    width: 100%;
+    gap: 30px;
+  }
+  .head > h1 {
+    text-align: center;
+    font-weight: bold !important;
+    font-size: 50px;
+    color: white;
+  }
+  .head_text{
+    text-align: left;
+    font-weight: normal;
+    font-size: 15px;
+    text-wrap: balance;
+    padding-left: 10px;
+    width: 100%;
+    color: white;
+  }
+  .container > p {
+    align-self: center;
   }
 
-  & > * {
-    margin: 5px;
+  .additional-button {
+    align-self: center;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    color: #80DB56;
+    font-weight: 20px;
+    width: 150px;
+    box-shadow: none;
+    margin-top: 50px;
+  }
+
+  .additional-button:hover {
+    background-color: #e5e5e5;
+    scale: 1.1;
   }
 }
 
-.desktop-grid {
-  margin-top: 4rem;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  gap: 5px;
 
-  & > :global(.v-card){
-    margin: 0px !important;
-  }
-}
-
-.col {
-  padding: 0px !important;
-  padding-inline: 5px !important;
-}
-
-.v-card {
-  background: transparent;
-}
 </style>
