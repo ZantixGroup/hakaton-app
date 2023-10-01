@@ -18,7 +18,7 @@
             </div>
 
             <div>
-                <v-radio-group v-model="radioGroup" class="d-flex flex-wrap" row style="width: 400px;">
+                <v-radio-group v-model="radioGroup" class="d-flex flex-wrap" row>
                     <v-spacer></v-spacer>
                     <v-spacer></v-spacer>
                     <div class="d-flex flex-wrap">
@@ -38,7 +38,7 @@
       </v-col>
     </v-row>
   </template>
-  
+
   <script>
   export default {
     name: "multch",
@@ -51,6 +51,6 @@
     },
   }
   </script>
-  
+
 <style>
 </style>
