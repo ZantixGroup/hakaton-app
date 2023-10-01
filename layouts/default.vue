@@ -106,14 +106,18 @@ export default {
         "starter": "Sākumlapa",
         "top": "Tops",
         "profile": "Profils",
-        "math": "Matemātika",
+        "mathematics": "Matemātika",
         "technology": "Tehnoloģijas",
-        "mech": "Inženierija",
+        "engineering": "Inženierija",
         "science": "Zinātne",
         "technology-1": "Ievads Javascript",
         "technology-2": "Javascript selektori",
         "technology-3": "Animācijas ar javascript",
         "technology-4": "Dati no citām sistēmām",
+        "mathematics-1": "Ievads Algebrā",
+        "mathematics-2": "Daļveida izteiksmes",
+        "mathematics-g1": "Rinķa līnija",
+        "mathematics-g2": "Sinus, cosinus un tangens"
       }
     }
   },
