@@ -14,13 +14,27 @@
                 <p>Daļveida racionālu izteiksmi, kurā skaitītājs un saucējs ir polinomi, sauc par algebrisku daļu.</p>
                 <p>(Atceries! Par polinomu sauc monomu summu, piemēram 𝑥+𝑦;𝑥^2+3;𝑥+𝑥^2−4𝑦).</p>
                 <div>
-                    <Multiplechoice :number="number" :question="questions" :answers="answers"></Multiplechoice>
+                    <Multiplechoice @change="v => cSelect(v)" :number="number" :question="questions" :answers="answers"></Multiplechoice>
                 </div>
-                <v-btn color="primary" text @click="nextCat">
-                    Tālāk
-                    <v-icon>mdi-arrow-right</v-icon>
-                </v-btn>
+                <div>
+                    <div class="d-flex">
+                        <v-spacer/>
+                        <v-btn color="primary" class="py-1 px-2" :disabled="doneTask" @click="checkAnswer">Pārbaudīt!</v-btn>
+                        <v-spacer/>
+                    </div>
+                    
+                    <v-alert color="error" class="my-2 mx-2" v-if="testFail" style="color: white">
+                        <v-icon color="white" class="mx-2">mdi-alert</v-icon> Diemžēl dotā atbilde ir nepareiza!
+                    </v-alert>
+                </div>
             </v-card-text>
+            <v-card-actions>
+        <v-spacer/>
+        <v-btn v-if="doneTask" color="primary" text @click="nextCat()">
+            Pabeigt DEMO!
+            <v-icon>mdi-arrow-up</v-icon>
+        </v-btn>
+    </v-card-actions>
         </v-card>
     </div>
 </template>
@@ -36,11 +50,24 @@ export default{
         return{
             number: "1",
             questions: "Vai izteiksme y-3/y^2-4y+2 ir daļveida izteiksme?",
-            answers: ["Jā!", "Nē!"]
+            answers: ["Jā!", "Nē!"],
+            testFail: false,
+            doneTask: false
         };
     }, methods: {
         nextCat(){
           this.$router.push({ name: "mathematics"})
+        },
+        cSelect(val){
+            this.selected = val
+        },
+        checkAnswer(){
+            if(this.selected === 0){
+                this.doneTask = true
+            }
+            else {
+                this.testFail = true
+            }
         }
     }
 }

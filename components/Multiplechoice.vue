@@ -18,7 +18,7 @@
             </div>
 
             <div>
-                <v-radio-group v-model="radioGroup" class="d-flex flex-wrap" row>
+                <v-radio-group v-model="radioGroup" class="d-flex flex-wrap" row @change="v => emitC(v)">
                     <v-spacer></v-spacer>
                     <v-spacer></v-spacer>
                     <div class="d-flex flex-wrap">
@@ -45,10 +45,14 @@
     props: ["number", "question", "answers"],
     data () {
       return {
-        description: "among us",
         radioGroup: null,
       }
     },
+    methods: {
+      emitC(select){
+        this.$emit('change', select)
+      }
+    }
   }
   </script>
 
