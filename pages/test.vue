@@ -145,8 +145,8 @@
     <div v-show="!show" style="text-align: center">
       <h1>Pēc testa rezultāta mēs esam noteikuši, ka Tu varētu būt<br> <u>{{ result.speciality }}</u> - <u>{{ result.category }}</u> jomā</h1>
       <br>
-      <div class="center">
-        <v-btn variant="tonal" @click="$router.push('/starter')">
+      <div class="center" style="text-align: center;">
+        <v-btn variant="tonal" style="text-align: center;" @click="$router.push('/starter')">
           Iet mācīties
         </v-btn>
       </div>
@@ -218,6 +218,7 @@ export default {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 300px;
 }
 
 .center {
