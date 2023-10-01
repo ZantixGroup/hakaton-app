@@ -45,7 +45,7 @@
       <v-spacer>
       <v-row justify="center" no-gutters>
         <v-col class="text-center">
-          &copy; {{ new Date().getFullYear() }} SIA Zantix visas tiesības aizsargātas
+          &copy; {{ new Date().getFullYear() }} Zantix visas tiesības aizsargātas
         </v-col>
       </v-row>
       </v-spacer>
