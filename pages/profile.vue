@@ -158,6 +158,10 @@ export default {
 }
 
 @media only screen and (max-width: 480px) {
+  .profile-container {
+    margin-bottom: 100px;
+  }
+
   .profile-subjects {
     width: 90%;
     min-width: 300px;
