@@ -24,7 +24,7 @@
           <v-btn @click="$router.push('/register')" text>Izveidot kontu</v-btn>
         </div>
       </v-form>
-      <p style="color: white; margin-top: auto;">&copy; {{ new Date().getFullYear() }} SIA Zantix - Visas tiesības aizsargātas</p>
+      <p style="color: white; margin-top: auto;">&copy; {{ new Date().getFullYear() }} Zantix - Visas tiesības aizsargātas</p>
     </div>
   </v-app>
 </template>
