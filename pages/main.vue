@@ -21,6 +21,11 @@ import {UserData} from "~/storage/user";
 export default {
   auth: false,
   layout: 'main-layout',
+  data() {
+    if (UserData.IsLoggedIn) {
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
@@ -34,16 +39,7 @@ export default {
   justify-content: center;
   align-content: center;
 }
-.container-right{
-  align-self: end;
-  width: 100%;
-  height: 100vh;
-  background-color: #80DB56;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-}
+
 .head {
   display: flex;
   flex-direction: column;
@@ -80,6 +76,12 @@ export default {
   height: 50px !important;
   box-shadow: none;
   margin-top: 20px;
+  transition: .6;
+}
+
+.additional-button:hover {
+  background-color: #e5e5e5;
+  scale: 1.1;
 }
 
 @media only screen and (max-width: 975px) {
@@ -121,6 +123,11 @@ export default {
     width: 150px;
     box-shadow: none;
     margin-top: 50px;
+  }
+
+  .additional-button:hover {
+    background-color: #e5e5e5;
+    scale: 1.1;
   }
 }
 
