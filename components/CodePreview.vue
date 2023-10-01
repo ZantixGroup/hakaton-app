@@ -2,6 +2,7 @@
   <div class="my-4">
     <v-tabs
     v-model="tab"
+    mobile-break-point="1px"
     align-with-title
   >
     <v-tabs-slider color="#8CE961"></v-tabs-slider>
@@ -16,7 +17,7 @@
       Javascript
     </v-tab>
   </v-tabs>
-  <v-tabs-items v-model="tab">
+  <v-tabs-items v-model="tab" touchless>
       <v-tab-item
         key="html"
       >
@@ -156,7 +157,9 @@ export default {
 .hljs-link {
 	text-decoration: underline !important;
 }
-
+.code-block {
+  max-width: 90vw;
+}
 .html-block {
   border: 2px #5c5b5b solid !important;
   min-height: 200px;
