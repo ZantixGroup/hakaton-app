@@ -77,7 +77,6 @@ export default {
   background-color: #80DB56;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-content: center;
   align-items: center;
 }
@@ -137,12 +136,14 @@ export default {
 
 @media only screen and (max-width: 480px) {
   .login {
+    margin-top: 50px;
     width: 90%;
   }
 }
 
 @media only screen and (max-width: 400px) {
   .login {
+    margin-top: 50px;
     width: 350px;
   }
 }
