@@ -116,7 +116,6 @@ export default {
   background-color: #FFC532;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-content: center;
   align-items: center;
 }
@@ -182,12 +181,14 @@ export default {
 
 @media only screen and (max-width: 550px) {
   .register {
+    margin-top: 50px;
     width: 90%;
   }
 }
 
 @media only screen and (max-width: 420px) {
   .register {
+    margin-top: 50px;
     width: 350px;
   }
   .full-name {
