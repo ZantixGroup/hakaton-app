@@ -3,6 +3,9 @@
 ## Build Setup
 
 ```bash
+# Create .env file and enter
+API_ENDPOINT=endpoint-url
+
 # install dependencies
 $ yarn install
 
@@ -15,6 +18,10 @@ $ yarn start
 
 # generate static project
 $ yarn generate
+
+# For docker deployment
+$ docker compose build
+$ docker compose up -d
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
