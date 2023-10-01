@@ -53,7 +53,6 @@ export default {
 .v-card {
   overflow: hidden;
 }
-
 .card-container {
   height: calc((100vh - 112px - 5px) / 2);
   &.md { height: auto }

@@ -1,6 +1,6 @@
 <template>
-  <v-btn rounded outlined elevation="0" plain class="green-border" @click="logins">
-    <img src="/svg/star.svg" height="20px" width="20px" />
+  <v-btn rounded outlined elevation="0" plain class="green-border">
+    <img src="svg/star.svg" height="20px" width="20px" />
     {{ score }}
   </v-btn>
 </template>
@@ -12,19 +12,14 @@ export default {
     score(){
       return UserData.Score
     }
-  },
-  methods: {
-    logins(){
-      UserData.login('asd@asd.com', 'admin123')
-    }
   }
 }
 </script>
+
 <style scoped lang="scss">
 .green-border {
   background-color: $color-bg-green;
   border-color: $color-primary;
   border-width: 3px;
 }
-
 </style>

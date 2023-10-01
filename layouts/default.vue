@@ -65,6 +65,7 @@ import {UserData} from "~/storage/user";
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 import html from 'highlight.js/lib/languages/vbscript-html';
+
 export default {
   name: 'DefaultLayout',
   transition: {
@@ -187,7 +188,6 @@ export default {
   background: $color-bg-grey;
   width: 100% !important;
   overflow-x: hidden !important;
-  
   &::-webkit-scrollbar {
     width: 4px;
   }
@@ -196,7 +196,7 @@ export default {
     background-color: darkgrey;
     outline: 1px solid slategrey;
   }
-  
+
   &.md {
     max-width: 100% !important;
     padding-inline: calc((100vw - 1100px)/2) !important;

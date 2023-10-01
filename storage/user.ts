@@ -76,8 +76,9 @@ export class UserData {
 
   public static logout(){
     return new Promise((resolve)=>{
-      this._context.$auth.get('https://api-hakatons.dev.zantix.net/api/v1/get').then(()=>{
+      this._context.$axios.get('https://api-hakatons.dev.zantix.net/api/v1/logout').then(()=>{
         this.wipeData()
+        resolve(true)
       })
     })
   }
