@@ -1,6 +1,6 @@
 <template>
   <div v-if="user" class="profile-container">
-<!--    <img :src="`svg/avatars/${user.avatar}.svg`" width="105px" height="105px">-->
+    <img :src="`svg/avatars/${user.avatar}.svg`" width="105px" height="105px">
     <h2>{{ user.name + ' ' + user.surname }}</h2>
     <p style="font-size: 12px;font-weight: bold">{{ user.email }}</p>
     <score-display style="margin-bottom: 10px"/>
@@ -26,10 +26,15 @@
         <h1>{{ user.t_level }}/100</h1>
       </div>
     </div>
+    <v-btn style="color: white; margin-top: 50px" color="#EC5757" height="50px" @click="logout()">
+      Pieslēgties
+    </v-btn>
   </div>
 </template>
 
 <script>
+import {UserData} from "~/storage/user";
+
 export default {
   name: 'profile',
   layout: 'default',
@@ -42,6 +47,13 @@ export default {
     this.$axios.get('/me').then(res => {
       this.user = res.data.data
     })
+  },
+  methods: {
+    logout() {
+      UserData.logout().then(()=>{
+        this.$router.push('/login')
+      })
+    }
   }
 }
 </script>
@@ -78,6 +90,13 @@ export default {
   background-color: red;
   overflow: hidden;
   color: white;
+}
+
+.profile-science:hover,
+.profile-math:hover,
+.profile-engineering:hover,
+.profile-technology:hover {
+
 }
 
 .profile-subject-icon {
