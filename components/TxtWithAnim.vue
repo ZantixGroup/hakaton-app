@@ -84,11 +84,12 @@ export default {
               line: {simplify: false},
             }], {
               xaxis: {range: [-Math.PI, Math.PI]},
-              yaxis: {range: [-1.2, 1.2]},
+              yaxis: {range: [-Math.PI, Math.PI]},
             }, {displayModeBar: false}).then(function() {
               Plotly.addFrames('graph', frames);
             });
           break;
+
         case "graph":
           Plotly.newPlot('graph', [{
             x: [1, 2, 3],
