@@ -13,8 +13,8 @@
                 <p>Skolas kursā visbiežāk izmanto vērtības 30, 45 un 60 grādiem. Lai uzzinātu citas vērtības jāizmanto tabulas vai kalkulators.</p>
                 <TxtWithAnim :type="type"  :n="n" :text="text"></TxtWithAnim>
                 <v-btn color="primary" text @click="nextCat">
-                    Tālāk
-                    <v-icon>mdi-arrow-right</v-icon>
+                    Atgriezties!
+                    <v-icon>mdi-arrow-up</v-icon>
                 </v-btn>
             </v-card-text>
         </v-card>
