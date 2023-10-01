@@ -37,7 +37,7 @@
       </div>
     </div>
     <v-btn style="color: white; margin-top: 50px; margin-bottom: 25px" color="#EC5757" height="50px" @click="logout()">
-      Pieslēgties
+      Izrakstīties
     </v-btn>
   </div>
 </template>
@@ -158,10 +158,6 @@ export default {
 }
 
 @media only screen and (max-width: 480px) {
-  .profile-container {
-    margin-bottom: 100px;
-  }
-
   .profile-subjects {
     width: 90%;
     min-width: 300px;
