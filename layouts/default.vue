@@ -35,6 +35,7 @@
         <template>
           <Nuxt/>
         </template>
+        <div :style="$vuetify.breakpoint.smAndDown?'margin-bottom: 100px':''" />
       </v-container>
     </v-main>
     <v-footer
