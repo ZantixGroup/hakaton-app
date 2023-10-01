@@ -1,6 +1,6 @@
 <template>
   <v-container class="bg-gray d-flex flex-column align-items-center">
-    <div class="pedestal" v-if="leaderboard.length > 0">
+    <div class="pedestal" v-if="leaderboard?.length > 0">
       <div class="bronze">
         <img :src="`svg/avatars/${leaderboard[2].avatar}.svg`" width="93.6px" height="93.6px">
         <img src="svg/pedestal/bronze.svg" width="78px">
@@ -53,7 +53,7 @@ export default {
       return UserData.Id
     }
   },
-  mounted() {
+  created() {
     this.$axios.get('/users').then(res => {
       this.leaderboard = res.data.data
     })

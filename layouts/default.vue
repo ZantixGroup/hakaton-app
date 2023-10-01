@@ -155,6 +155,15 @@ export default {
   }
 }
 
+.v-btn:not(.v-btn--round).v-size--default {
+  height: auto !important;
+}
+
+.theme--light.v-btn.v-btn--has-bg {
+  background-color: transparent !important;
+}
+
+
 .nav-btn-title {
   margin-right: 10px;
   font-weight: 600;

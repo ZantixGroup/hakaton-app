@@ -1,9 +1,9 @@
 <template>
   <v-row justify="center" align="center" style="height: 100%;" class="bg">
     <v-col cols="12">
-      <StudyButtons :title1="title" :subtitle1="subtitle" :items="items"></StudyButtons>
-      <StudyButtons :title1="title2" :subtitle1="subtitle2" :items="items2"></StudyButtons>
-      <StudyButtons :title1="title3" :subtitle1="subtitle3" :items="items3"></StudyButtons>
+      <StudyButtons color="green" :title1="title" :subtitle1="subtitle" :items="items"></StudyButtons>
+      <StudyButtons color="green" :title1="title2" :subtitle1="subtitle2" :items="items2"></StudyButtons>
+      <StudyButtons color="green" :title1="title3" :subtitle1="subtitle3" :items="items3"></StudyButtons>
     </v-col>
   </v-row>
 </template>
@@ -21,7 +21,7 @@ export default {
           {title: "Ievads", subtitle: "Ievads algebrā", target: 'tech-1', locked: true}, 
           {title: "Daļveida izteiksmes", subtitle: "Daļveida izteiksmes un to pielietojums", target: 'tech-3', locked: true}, 
           {title: "Kvadrātfunkcija", subtitle: "Darbs ar kvadrātfunkcijām", target: 'tech-4', locked: true}, 
-          {title: "Polinomu dalīšana", subtitle: "Polinomu aprēķināšanas veidi", target: 'tech-2'},          
+          {title: "Polinomu dalīšana", subtitle: "Polinomu aprēķināšanas veidi", target: 'tech-2', locked: true},          
           {title: "Statistika", subtitle: "Pamata web servera uzstādne, ķešēšana, drošība", locked: true }, ],
           
           title2: "Ģeometrija",
