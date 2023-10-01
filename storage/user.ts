@@ -66,7 +66,7 @@ export class UserData {
         this._context.$auth.strategy.token.set(v.data.access_token)
         const a = v.data.user
         this.setUser(a.name, a.surname, a.id, a.score, a.s_level, a.t_level, a.e_level, a.m_level, a.avatar)
-        this._context.$router.push('/');
+
         resolve(true)
       }).catch((e: any)=>{
         resolve(false)
