@@ -8,13 +8,13 @@
     >
       <div class="nav-container">
         <div class="green-text-better" @click="lastPage()">
-          <v-icon class="icon">{{ activeCategory==='index'?'mdi-home':'mdi-arrow-left' }}</v-icon>
+          <v-icon class="icon">{{ activeCategory==='starter'?'mdi-home':'mdi-arrow-left' }}</v-icon>
           <b>{{ routeNames[activeCategory] }}</b>
         </div>
       </div>
       <v-spacer v-if="!$vuetify.breakpoint.mobile"/>
       <div class="header-nav" v-if="!$vuetify.breakpoint.mobile">
-        <v-btn v-for="(item,i) in items" :key="i" text  :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="item.to === 'index' ? (activeCategory !== 'top' && activeCategory !== 'profile' ? 'selected-btn-top': ''):(item.to === activeCategory? 'selected-btn-top':'')">
+        <v-btn v-for="(item,i) in items" :key="i" text  :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="item.to === 'starter' ? (activeCategory !== 'top' && activeCategory !== 'profile' ? 'selected-btn-top': ''):(item.to === activeCategory? 'selected-btn-top':'')">
           <span class="nav-btn-title" v-if="!$vuetify.breakpoint.smAndDown">{{ item.title }}</span>
           <img :src="item.iconPath" height="35px" width="40px"/>
         </v-btn>
@@ -50,7 +50,7 @@
       </v-spacer>
     </v-footer>
     <v-bottom-navigation v-else horizontal fixed>
-      <v-btn v-for="(item,i) in items" :key="i" :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="item.to === 'index' ? (activeCategory !== 'top' && activeCategory !== 'profile' ? 'selected-btn': ''):(item.to === activeCategory? 'selected-btn':'')">
+      <v-btn v-for="(item,i) in items" :key="i" :value="item.to" @click="navigateTo(item.to)" :ripple="false" :class="item.to === 'starter' ? (activeCategory !== 'top' && activeCategory !== 'profile' ? 'selected-btn': ''):(item.to === activeCategory? 'selected-btn':'')">
         <span v-if="!$vuetify.breakpoint.smAndDown">{{ item.title }}</span>
         <img :src="item.iconPath" height="35px" width="40px"/>
       </v-btn>
@@ -87,7 +87,7 @@ export default {
         {
           iconPath: '/svg/book.svg',
           title: 'Mācības',
-          to: 'index'
+          to: 'starter'
         },
         {
           iconPath: '/svg/user.svg',
@@ -101,7 +101,7 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js',
       routeNames: {
-        "index": "Sākumlapa",
+        "starter": "Sākumlapa",
         "top": "Tops",
         "profile": "Profils",
         "math": "Matemātika",
@@ -139,7 +139,7 @@ export default {
       let a = this.activeCategory.split('-')
       a.pop()
       if(a.length === 0){
-        a = ['index']
+        a = ['starter']
       }
       this.navigateTo(a.join('-'))
     },
