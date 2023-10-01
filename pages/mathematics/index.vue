@@ -27,10 +27,10 @@ export default {
           title2: "Ģeometrija",
           subtitle2: "Trīstūri, riņķi un citas figūras",
           items2: [
+            {title: "Riņķa līnija", subtitle: "Riņķi un apļi", target: "mathematics-g1",locked: false }, 
+            {title: "Sin, cos", subtitle: "Sīnusi un kosīnusi", target: "mathematics-g2",locked: false }, 
             {title: "Taisnleņķa trīstūris", subtitle: "Aprēķināšana, hipetenūza, mediānas", locked: true }, 
             {title: "Lenķi un nogriežņi", subtitle: "Taisnu, paralēlu un citu līniju aprēķināšana", locked: true }, 
-            {title: "Riņķa līnija", subtitle: "Riņķi un apļi", locked: true }, 
-            {title: "Sin, cos, tg", subtitle: "Sīnusi un kosīnusi", locked: true }, 
           ],
 
           title3: 'Matricas',
