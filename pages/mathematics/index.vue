@@ -18,19 +18,19 @@ export default {
           title: "Algebra",
           subtitle: "Algebriskie vienādojumi",
           items: [
-          {title: "Ievads", subtitle: "Ievads algebrā", target: 'tech-1', locked: true}, 
-          {title: "Daļveida izteiksmes", subtitle: "Daļveida izteiksmes un to pielietojums", target: 'tech-3', locked: true}, 
+          {title: "Ievads", subtitle: "Ievads algebrā", target: 'mathematics-1', locked: false}, 
+          {title: "Daļveida izteiksmes", subtitle: "Daļveida izteiksmes un to pielietojums", target: 'mathematics-2', locked: false}, 
           {title: "Kvadrātfunkcija", subtitle: "Darbs ar kvadrātfunkcijām", target: 'tech-4', locked: true}, 
-          {title: "Polinomu dalīšana", subtitle: "Polinomu aprēķināšanas veidi", target: 'tech-2', locked: true},          
-          {title: "Statistika", subtitle: "Pamata web servera uzstādne, ķešēšana, drošība", locked: true }, ],
+          {title: "Polinomu dalīšana", subtitle: "Polinomu aprēķināšanas veidi", target: 'tech-2', locked: true, locked: true},          
+          {title: "Statistika", subtitle: "Kolerācija ", locked: true }, ],
           
           title2: "Ģeometrija",
           subtitle2: "Trīstūri, riņķi un citas figūras",
           items2: [
             {title: "Taisnleņķa trīstūris", subtitle: "Aprēķināšana, hipetenūza, mediānas", locked: true }, 
-            {title: "Sin, cos, tg", subtitle: "Sīnusi un kosīnusi", locked: true }, 
             {title: "Lenķi un nogriežņi", subtitle: "Taisnu, paralēlu un citu līniju aprēķināšana", locked: true }, 
             {title: "Riņķa līnija", subtitle: "Riņķi un apļi", locked: true }, 
+            {title: "Sin, cos, tg", subtitle: "Sīnusi un kosīnusi", locked: true }, 
           ],
 
           title3: 'Matricas',

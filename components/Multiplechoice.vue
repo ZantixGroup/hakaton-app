@@ -7,37 +7,33 @@
       >
         <v-card class="no-outline">
             <!-- Vuetify Toolbar -->
-            <v-toolbar color="white" light class="no-outline">
-                <v-spacer></v-spacer>
-                <v-toolbar-title class="black--text">
-                <div class="text-center">
-                    Question {{ number }}
-                </div>
-                <div class="undertitle" v-if="typeof question==='string'">
-                    {{ question }}
-                </div>
-                <div v-else>
-                    <component :is="question" ></component>
-                </div>
-                </v-toolbar-title>
-                <v-spacer></v-spacer>
-            </v-toolbar>
+            <h2 class="text-center">
+                Jautājums {{ number }}
+            </h2>
+            <p class="undertitle" v-if="typeof question==='string'">
+                 {{ question }}
+            </p>
+            <div v-else>
+                <component :is="question" ></component>
+            </div>
 
-            <v-row>
-                <v-spacer></v-spacer>
-                <div class="d-flex justify-center">
-                    <v-radio-group v-model="radioGroup" class="d-flex flex-wrap" row style="width: 400px;">
+            <div>
+                <v-radio-group v-model="radioGroup" class="d-flex flex-wrap" row style="width: 400px;">
+                    <v-spacer></v-spacer>
+                    <v-spacer></v-spacer>
+                    <div class="d-flex flex-wrap">
                         <v-radio
-                            v-for="(answer, index) in answers"
-                            :key="index"
-                            :label="`${answer}`"
-                            :value="index"
-                            class="mt-6"
-                            style="width: 100px"
+                        v-for="(answer, index) in answers"
+                        :key="index"
+                        :label="`${answer}`"
+                        :value="index"
+                        class="mt-6"
+                        style="width: 100px"
                         ></v-radio>
-                    </v-radio-group>
-                </div>
-            </v-row>
+                    </div>
+                    <v-spacer></v-spacer>
+                </v-radio-group>
+            </div>
         </v-card>
       </v-col>
     </v-row>
@@ -56,21 +52,5 @@
   }
   </script>
   
-  <style>
-  .no-outline {
-      box-shadow: none !important; /* Remove box shadow */
-      border: none !important; /* Remove border */
-  }
-  .transparent {
-      background-color: transparent; /* Transparent background */
-      padding: 0; /* Remove default padding */
-  }
-  .v-list-item{
-      border: none !important; /* Remove default list item border */
-  }
-  .undertitle {
-      font-size: 16px;
-      color: #555;
-      text-align: center;
-  }
-  </style>
+<style>
+</style>
