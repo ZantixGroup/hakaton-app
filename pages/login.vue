@@ -64,6 +64,9 @@ export default {
       if (!this.$refs.form.validate() ) { return }
       UserData.login(this.form.email, this.form.password).then(isSuccess => {
         this.isCorrect = isSuccess
+         if(isSuccess) {
+           this.$router.push('/')
+         }
       })
     }
   }

@@ -99,7 +99,10 @@ export default {
         'password': this.form.password,
         'password_confirmation': this.form.password_confirmation,
       }).then(res => {
-        this.$router.push('/login')
+        localStorage.setItem('test', 'true')
+        UserData.login(this.form.email, this.form.password).then(() => {
+          this.$router.push('/test')
+        })
       }).catch(e => {
         this.isCorrect = false
       })

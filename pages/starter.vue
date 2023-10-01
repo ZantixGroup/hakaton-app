@@ -3,36 +3,36 @@
     <v-col cols="12">
       <v-card flat>
         <div :class="($vuetify.breakpoint.mobile? $vuetify.breakpoint.xs?'mobile-flex':'mobile-flex':'desktop-grid')">
-          <SubjectBlock 
-            @click="changeToCategory('science')" 
-            title="Zinātne" 
-            description="Sistemātiska un kārtota patiesības meklēšana" 
+          <SubjectBlock
+            @click="changeToCategory('science')"
+            title="Zinātne"
+            description="Sistemātiska un kārtota patiesības meklēšana"
             color="red"
             :score="s_lvl()"
             maxScore="100"
             svgPath="/svg/Science.svg"/>
-          <SubjectBlock 
-            @click="changeToCategory('mathematics')" 
-            title="Matemātika" 
-            description="Abstrakts skaitļu un lielumu pētījums" 
-            color="green" 
-            :score="t_lvl()" 
+          <SubjectBlock
+            @click="changeToCategory('mathematics')"
+            title="Matemātika"
+            description="Abstrakts skaitļu un lielumu pētījums"
+            color="green"
+            :score="t_lvl()"
             maxScore="100"
             svgPath="/svg/Math.svg"/>
-          <SubjectBlock 
-            @click="changeToCategory('engineering')" 
-            title="Indžinierija" 
-            description="Izstrādā risinājumus reāliem izaicinājumiem" 
-            color="blue" 
-            :score="e_lvl()" 
+          <SubjectBlock
+            @click="changeToCategory('engineering')"
+            title="Indžinierija"
+            description="Izstrādā risinājumus reāliem izaicinājumiem"
+            color="blue"
+            :score="e_lvl()"
             maxScore="100"
             svgPath="/svg/Engineering.svg"/>
           <SubjectBlock
-            @click="changeToCategory('technology')" 
-            title="Tehnoloģija" 
-            description="Inovatīvi rīki kas veido mūsu nākotni" 
-            color="orange" 
-            :score="m_lvl()" 
+            @click="changeToCategory('technology')"
+            title="Tehnoloģija"
+            description="Inovatīvi rīki kas veido mūsu nākotni"
+            color="orange"
+            :score="m_lvl()"
             maxScore="100"
             svgPath="/svg/Technology.svg"/>
         </div>
@@ -67,6 +67,12 @@ export default {
     m_lvl(){
       return UserData.M_level
     },
+  },
+  mounted() {
+    console.log(localStorage.getItem('test'))
+    if(localStorage.getItem('test')) {
+      this.$router.push('/test')
+    }
   }
 }
 </script>
