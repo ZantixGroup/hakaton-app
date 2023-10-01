@@ -1,9 +1,9 @@
 <template>
     <v-row justify="center" align="center" style="height: 100%;" class="bg">
       <v-col cols="12">
-        <StudyButtons :title1="title" :subtitle1="subtitle" :items="items"></StudyButtons>
-        <StudyButtons :title1="title2" :subtitle1="subtitle2" :items="items2"></StudyButtons>
-        <StudyButtons :title1="title3" :subtitle1="subtitle3" :items="items3"></StudyButtons>
+        <StudyButtons color="orange" :title1="title" :subtitle1="subtitle" :items="items"></StudyButtons>
+        <StudyButtons color="orange" :title1="title2" :subtitle1="subtitle2" :items="items2"></StudyButtons>
+        <StudyButtons color="orange" :title1="title3" :subtitle1="subtitle3" :items="items3"></StudyButtons>
       </v-col>
     </v-row>
   </template>
