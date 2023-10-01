@@ -19,31 +19,30 @@ export default {
           subtitle: "Fizikas nozare, dabas izspēte",
           items: [
           {title: "Ievads", subtitle: "Ievads fizikas nozārē un saistītajās jomās", locked: true}, 
-          {title: "Vielu agregātstāvokļi", subtitle: "", locked: true}, 
-          {title: "Elektriskā strāva", subtitle: "Vienkāršas animācijas un objektu kustība", locked: true}, 
-          {title: "Darbs, jauda, enerģija", subtitle: "Dati iegūšana un nosūtne no ārējām sistēmām", locked: true}, 
+          {title: "Vielu agregātstāvokļi", subtitle: "Cietas, skirdas, gāzveida vielas", locked: true}, 
+          {title: "Elektriskā strāva", subtitle: "Elektrība, strāva, lādiņs", locked: true}, 
+          {title: "Darbs, jauda, enerģija", subtitle: "Vilcējspējs, siltumenerģija", locked: true}, 
 
           ],
           
           title2: "Ķīmija",
-          subtitle2: "Serveru un programmatūras uzstādne un apkope",
+          subtitle2: "Vielu pārvēršana un transformācija",
           items2: [
-            {title: "Linux uzstādne", subtitle: "Kas ir linux, kur to izmanto un kā uzstādīt", locked: true }, 
-            {title: "Bash pamata komandas", subtitle: "Bash komandrinda un populārākie rīku izmantošana", locked: true }, 
-            {title: "Tīkla pamata darbība", subtitle: "TCP/IP, Arp un tīklu veidi", locked: true }, 
-            {title: "Apache2/Nginx web serveri", subtitle: "Pamata web servera uzstādne, ķešēšana, drošība", locked: true }, 
-            {title: "DNS serveris", subtitle: "Kas ir DNS un kā to uzstādīt izmantojot BIND9", locked: true }, 
-            {title: "E-pasta serveri un IMAP", subtitle: "Privāta e-pasta servera uzstādne mājas tīklā", locked: true }, 
+            {title: "Ievads", subtitle: "Ķīmijas nozare", locked: true }, 
+            {title: "Fizieskie lielumi", subtitle: "Fizikālie lielumi pasaulē", locked: true }, 
+            {title: "Šķīdumi", subtitle: "Ūdens, skābes, bāzes", locked: true }, 
+            {title: "Metāli", subtitle: "Dzelzs, alumīnija, vara izpēte", locked: true }, 
+            {title: "Atomu un vienu uzbūve", subtitle: "Atoma sastāvdaļu izpēte", locked: true },  
           ],
 
           title3: 'Bioloģija',
-          subtitle3: 'Darbs ar lielajiem datiem un to lietišķa izmantošana',
+          subtitle3: 'Dabas un cilvēka izpēte. No vissīkākajiem organismiem līdz visplašākajām sistēmām uz šīs planētas.',
           items3: [
-            {title: "Kas ir lielie dati?", subtitle: "Kas ir lielie dati un kā tos izmantot", locked: true }, 
-            {title: "Statistika un trendi", subtitle: "Nākotnes trendu noteikšana izmantojot Excel", locked: true }, 
-            {title: "Kā mākslīgais intelekts iekļaujas", subtitle: "Kā mākslīgais  inteleks izmanto lielos datus un pielāgojas", locked: true }, 
-            {title: "AI ar Python", subtitle: "Ai pamati ar PyTorch un tirgus situācijas analīzes veikšana izmantojot publiski piejamos datus", locked: true }, 
-            {title: "Modernie lielo datu rīki", subtitle: "Kā ChatGPT un citi rīki integrējas darba gaitā", locked: true },
+            {title: "Augi", subtitle: "Augi ekosistēmās - mežos, krastos, kalnos, tuksnešos", locked: true }, 
+            {title: "Aļģes", subtitle: "Ūdens pasaules izpētne", locked: true }, 
+            {title: "Dzīvnieki", subtitle: "Dzivnieku evolūcija un savstarpējās attiecības", locked: true }, 
+            {title: "Cilvēks", subtitle: "Šūnu uzbūve, saistautdi, nervaudi", locked: true }, 
+            {title: "Biotehnoloģijas", subtitle: "DNS, RNA, selekcija", locked: true },
           ]
       };
   },

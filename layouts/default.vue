@@ -40,6 +40,7 @@
     <v-footer
       v-if="!$vuetify.breakpoint.mobile"
       height="60px"
+      app
     >
       <v-spacer>
       <v-row justify="center" no-gutters>
