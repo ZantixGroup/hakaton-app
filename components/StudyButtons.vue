@@ -37,16 +37,16 @@
                         </v-list-item-content>
                         <v-list-item-action>
                             <v-btn
-                                
-                                fab
-                                elevation="2"
-                                large
-                                :color="item.locked?'#8C8C8C':'#f06868'" 
-                                dark      
-                                :readonly="item.locked"
-                                :style="`border: 7px solid ${!item.locked?'#ec5757':'#646464; pointer-events: none;'}`"
-                                >
-                                <h1 style="color: white">{{ index+1 }}</h1>
+                              fab
+                              elevation="2"
+                              large
+                              dark      
+                              :readonly="item.locked"
+                              class=""
+                              :color="item.locked?'#8C8C8C':`${colors[color].secondary}`" 
+                              :style="`border: 7px solid ${!item.locked?`${colors[color].primary}; box-shadow: 0px 4px 0 ${colors[color].shadow} !important;`:`#848484; pointer-events: none; box-shadow: 0px 4px 0 #8C8C8C !important;`}`"
+                            >
+                              <h1 style="color: white">{{ index+1 }}</h1>
                             </v-btn>
                         </v-list-item-action>
                     </v-row>
@@ -62,12 +62,35 @@
 <script>
 export default {
   name: "stbutton",
-  props: ["title1", "subtitle1", "items"],
+  props: ["title1", "subtitle1", "items", "color"],
   data () {
     return {
-      description: "among us"
+      description: "among us",
+      colors: {
+        red: {
+          primary: "#EC5757",
+          secondary: "#F06868",
+          shadow: "#E14242"
+        },
+        green: {
+          primary: "#8CE961",
+          secondary: "#A8F186",
+          shadow: "#7BDA50"
+        },
+        blue: {
+          primary: "#708EF8",
+          secondary: "#869EF3",
+          shadow: "#5A7AEB"
+        },
+        orange: {
+          primary: "#FFC632",
+          secondary: "#FAD370",
+          shadow: "#DEB448"
+        },
+      }
     }
   },
+
   methods: {
     emitClick(e){
       if(!e.locked)
@@ -77,7 +100,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.v-btn {
+  transition: 0.2s !important;
+  &:hover {
+    scale: 1.1 !important;
+  }
+}
+
 .no-outline {
     box-shadow: none !important; /* Remove box shadow */
     border: none !important; /* Remove border */

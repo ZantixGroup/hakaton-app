@@ -4,7 +4,7 @@
     v-model="tab"
     align-with-title
   >
-    <v-tabs-slider color="yellow"></v-tabs-slider>
+    <v-tabs-slider color="#8CE961"></v-tabs-slider>
 
     <v-tab key="html">
       HTML
