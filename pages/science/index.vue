@@ -18,11 +18,11 @@ export default {
           title: "Fizika",
           subtitle: "Fizikas nozare, dabas izspēte",
           items: [
-          {title: "Ievads", subtitle: "Ievads Javascript valodā, kur tiek parādītas Javascript valodas spējas", target: 'tech-1'}, 
-          {title: "Javascript selektori", subtitle: "Kā izvēlēties html elementus no javascript, prieks manipulācijas", target: 'tech-2'}, 
-          {title: "Animācijas ar javascript", subtitle: "Vienkāršas animācijas un objektu kustība", target: 'tech-3'}, 
-          {title: "Dati no citām sistēmām", subtitle: "Dati iegūšana un nosūtne no ārējām sistēmām", target: 'tech-4', locked: true}, 
-          
+          {title: "Ievads", subtitle: "Ievads fizikas nozārē un saistītajās jomās", locked: true}, 
+          {title: "Vielu agregātstāvokļi", subtitle: "", locked: true}, 
+          {title: "Elektriskā strāva", subtitle: "Vienkāršas animācijas un objektu kustība", locked: true}, 
+          {title: "Darbs, jauda, enerģija", subtitle: "Dati iegūšana un nosūtne no ārējām sistēmām", locked: true}, 
+
           ],
           
           title2: "Ķīmija",
